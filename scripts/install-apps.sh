@@ -17,4 +17,5 @@ sudo apt-get -y install baobab
 sudo apt-get -y install ruby
 sudo apt-get -y install python3-pip
 sudo apt-get -y install indicator-sysmonitor
+sudo apt-get -y install terminator
 
