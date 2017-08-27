@@ -1,0 +1,10 @@
+func_deep_find() {
+  sudo grep -ri $1
+}
+func_deep_grep() {
+  sudo find . -name *$1*
+}
+func_process_find() {
+  ps aux | grep $1
+}
+
