@@ -14,3 +14,5 @@ sudo apt-get -y install tree
 sudo apt-get -y install vlc
 sudo apt-get -y install xclip
 sudo apt-get -y install baobab
+sudo apt-get -y install ruby
+

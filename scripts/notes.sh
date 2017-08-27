@@ -1,8 +1,6 @@
 echo
-echo "Install from net"
+echo "The following need to be installed manually"
 echo " - Chrome"
-echo " - IntelliJ    (run .idea.sh)"
-echo " - Gradle      (/usr/lib/gradle)"
-echo
-echo "apt-get is too out of date for these"
+echo " - Android Studio    [.../bin/studio.sh]"
+echo " - IntelliJ          [.../bin/idea.sh  ]"
 echo
