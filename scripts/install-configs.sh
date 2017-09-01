@@ -12,3 +12,6 @@ sudo cp ../config/indicator-sysmonitor.json ~/.indicator-sysmonitor.json
 sudo mkdir -p ~/.config/autostart
 sudo cp ../config/autostart/indicator-sysmonitor.desktop ~/.config/autostart/
 
+# Terminator
+sudo mkdir -p ~/.config/terminator
+sudo cp ../config/terminator ~/.config/terminator/config
