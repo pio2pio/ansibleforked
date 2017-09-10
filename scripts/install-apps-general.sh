@@ -8,7 +8,7 @@ sudo apt-get -y install lib32ncurses5
 sudo apt-get -y install lib32stdc++6
 
 printf "****************\nInstalling Applications\n****************\n"
-sudo apt-get -y install vim
+# sudo apt-get -y install vim                          [~/scripts/install-apps-vim.sh]
 sudo apt-get -y install tree
 sudo apt-get -y install vlc
 sudo apt-get -y install xclip

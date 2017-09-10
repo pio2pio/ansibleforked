@@ -1,7 +1,30 @@
-" General settings
+"-----------------------------------------------------
+" VUNDLE
+"-----------------------------------------------------
+" Turn off vi compatibility
 set nocompatible
 set encoding=utf8
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
+" Plugin manager
+Plugin 'gmarik/vundle'
+
+" Plugins
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+" Plugin config
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+
+" Finalise
+filetype plugin indent on
+
+"-----------------------------------------------------
+" GENERAL
+"-----------------------------------------------------
 " Filetype
 filetype plugin on
 syntax on
@@ -21,9 +44,5 @@ set ignorecase
 set number
 set laststatus=2
 set noshowmode
-
-" Powerline
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
+"-----------------------------------------------------
 
