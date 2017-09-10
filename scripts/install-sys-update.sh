@@ -8,7 +8,3 @@ printf "****************\nUpdate System\n****************\n";
 sudo apt-get update
 sudo apt-get -y upgrade
 
-printf "****************\nSystem 'Fix'\n****************\n";
-sudo apt-get install -f
-sudo dpkg --configure -a
-
