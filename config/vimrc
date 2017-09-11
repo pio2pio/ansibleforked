@@ -33,6 +33,7 @@ set tabstop=2
 set softtabstop=2
 set expandtab
 set autoindent
+set t_Co=256
 
 " Search
 set hlsearch
