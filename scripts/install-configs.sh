@@ -7,6 +7,9 @@ cp ./config/bashrc ~/.bashrc
 cp ./config/bash_functions ~/.bash_functions
 cp ./config/bash_aliases ~/.bash_aliases
 
+# Powerline
+cp ./config/powerline-shell.json ~/.powerline-shell.json
+
 # System mem/cpu indicator
 cp ./config/indicator-sysmonitor.json ~/.indicator-sysmonitor.json
 mkdir -p ~/.config/autostart

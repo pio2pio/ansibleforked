@@ -1,0 +1,10 @@
+{
+  "segments": [
+    "username",
+    "cwd"
+  ],
+  "cwd": {
+    "mode": "plain"
+  }
+}
+
