@@ -9,6 +9,7 @@ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
 # Config
 cp ./config/vimrc ~/.vimrc
+sudo cp ./config/vimrc /root/.vimrc
 
 # Setup powerline fonts
 sudo mkdir -p /usr/local/share/fonts
@@ -19,4 +20,5 @@ sudo fc-cache -fv
 
 # Install Vundle plugins
 vim +PluginInstall +qall
+sudo vim +PluginInstall +qall
 
