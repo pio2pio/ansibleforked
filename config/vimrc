@@ -39,15 +39,18 @@
 " MAPPINGS
 "-----------------------------------------------------
 
-  map <C-Right> :next<CR>
-  map <C-Left> :prev<CR>
-  map <S-Right> :wnext<CR>
-  map <S-Left> :wprev<CR>
+  map <C-Right>   :next<CR>
+  map <C-Left>    :prev<CR>
+  map <S-Right>   :wnext<CR>
+  map <S-Left>    :wprev<CR>
 
-  map <F2> :NERDTreeToggle<CR>
-  map <F3> <C-W><C-W>
-  map <F10> :set paste!<CR>
-  map <F12> :set number!<CR>
+  map <F2>        :NERDTreeToggle<CR>
+  map <F3>        <C-W><C-W>
+  map <F5>        :w<CR>
+  map <F9>        :edit!<CR>
+  map <F10>       :set paste!<CR>
+  map <F12>       :set number!<CR>
+
 
 "-----------------------------------------------------
 " GENERAL
