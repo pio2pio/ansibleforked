@@ -2,7 +2,7 @@
 
 printf "****************\nInstalling Config\n****************\n";
 git clone git@github.com:OurFriendIrony/home.git ~
-sudo git clone git@github.com:OurFriendIrony/home.git /
+sudo git clone git@github.com:OurFriendIrony/home.git /root
 # cp ./config/gitconfig ~/.gitconfig
 # cp ./config/bashrc ~/.bashrc
 # sudo cp ./config/bashrc /root/.bashrc
