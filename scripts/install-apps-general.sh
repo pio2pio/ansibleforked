@@ -18,6 +18,7 @@ sudo apt-get -y install python-pip
 sudo apt-get -y install python3-pip
 sudo apt-get -y install indicator-sysmonitor
 sudo apt-get -y install terminator
+sudo apt-get -y install keychain
 
 printf "****************\nInstalling Pip\n****************\n"
 sudo pip install powerline-shell
