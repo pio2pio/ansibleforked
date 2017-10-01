@@ -1,7 +1,9 @@
 {
   "segments": [
+    "ssh",
     "username",
-    "cwd"
+    "cwd",
+    "git"
   ],
   "cwd": {
     "mode": "plain"

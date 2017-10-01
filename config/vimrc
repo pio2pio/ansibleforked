@@ -16,7 +16,6 @@
   Plugin 'scrooloose/nerdtree'
   Plugin 'Xuyuanp/nerdtree-git-plugin'
   Plugin 'tpope/vim-fugitive'
-  Plugin 'raimondi/delimitmate'
   Plugin 'vim-airline/vim-airline'
   Plugin 'vim-airline/vim-airline-themes'
 
@@ -51,7 +50,6 @@
   map <F10>       :set paste!<CR>
   map <F12>       :set number!<CR>
 
-
 "-----------------------------------------------------
 " GENERAL
 "-----------------------------------------------------
@@ -60,11 +58,12 @@
   filetype plugin on
   syntax on
   set backspace=indent,eol,start
-  set tabstop=2
-  set softtabstop=2
-  set expandtab
-  set autoindent
   set t_Co=256
+
+" Tabs
+  set expandtab
+  set shiftwidth=2
+  set softtabstop=2
 
 " Search
   set hlsearch
