@@ -5,6 +5,8 @@ printf "****************\nInstalling Config\n****************\n";
 # Dirs
 mkdir -p ~/.config/autostart
 mkdir -p ~/.config/terminator
+mkdir -p ~/.config/keychain
+mkdir -p ~/.config/wallpapers
 
 # User
      cp     ./cfg/.gitignore                        ~            # [Git]
@@ -14,7 +16,7 @@ mkdir -p ~/.config/terminator
      cp     ./cfg/.bash_aliases                     ~            # [Bash]
      cp     ./cfg/.powerline-shell.json             ~            # [Powerline]
      cp     ./cfg/.indicator-sysmonitor.json        ~            # [SysMonitor]
-     cp -rf ./cfg/.config                           ~            # [autostart] [Terminator]
+     cp -rf ./cfg/.config                           ~            # [autostart] [Terminator] [desktopimages]
 
 # Root User
 sudo cp     ./cfg/.bashrc                           /root        # [Bash]
