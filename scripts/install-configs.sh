@@ -3,6 +3,7 @@
 printf "****************\nInstalling Config\n****************\n";
 
 # Dirs
+mkdir -p ~/.aws
 mkdir -p ~/.config/autostart
 mkdir -p ~/.config/terminator
 mkdir -p ~/.config/keychain
@@ -16,6 +17,7 @@ mkdir -p ~/.config/wallpapers
      cp     ./cfg/.bash_aliases                     ~            # [Bash]
      cp     ./cfg/.powerline-shell.json             ~            # [Powerline]
      cp     ./cfg/.indicator-sysmonitor.json        ~            # [SysMonitor]
+     cp -rf ./cfg/.aws                              ~            # [AWS]
      cp -rf ./cfg/.config                           ~            # [autostart] [Terminator] [desktopimages]
 
 # Root User
