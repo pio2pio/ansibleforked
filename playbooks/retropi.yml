@@ -1,0 +1,10 @@
+---
+# Tasks
+
+- hosts: retropi
+  become_user: root
+  become_method: sudo
+  connection: local
+  gather_facts: yes
+  roles:
+  - role: ../roles/prereq
