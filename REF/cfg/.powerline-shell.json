@@ -1,0 +1,12 @@
+{
+  "segments": [
+    "ssh",
+    "username",
+    "cwd",
+    "git"
+  ],
+  "cwd": {
+    "mode": "plain"
+  }
+}
+

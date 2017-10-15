@@ -1,0 +1,33 @@
+*
+
+# Include dir [/etc]
+!/etc/
+!/etc/ansible/
+
+# Include dir [/home/{user}]
+!/.config/
+!/.config/autostart/
+!/.config/terminator/
+!/.config/keychain/
+!/.config/wallpapers/
+!/.aws
+
+# Inclusions [/etc]
+!/etc/ansible/ansible.cfg
+
+# Inclusions [/home/{user}]
+!.gitignore
+!.bash_aliases
+!.bash_functions
+!.bashrc
+!.gitconfig
+!.indicator-sysmonitor.json
+!.powerline-shell.json
+!.vimrc
+
+!/.config/autostart/indicator-sysmonitor.desktop
+!/.config/terminator/*
+!/.config/keychain/*
+!/.config/wallpapers/**/*
+!/.aws/*
+

@@ -1,0 +1,8 @@
+---
+
+- name: "libraries | apt | vim"
+  apt:
+    name: "{{ item }}"
+    state: "latest"
+  with_items: "{{ libraries_apt }}"
+

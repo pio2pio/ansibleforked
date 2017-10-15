@@ -1,0 +1,17 @@
+---
+
+- name: "libraries | apt | update cache"
+  apt:
+    update_cache: yes
+
+- name: "libraries | apt | prereqs"
+  apt:
+    name: "{{ item }}"
+    state: "latest"
+  with_items: "{{ libraries_apt }}"
+
+- name: "libraries | apt | clean"
+  apt:
+    autoclean: yes
+    autoremove: yes
+

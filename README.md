@@ -1,6 +1,5 @@
-## Pull
-`git clone --recursive git@github.com:OurFriendIrony/ubuntu-setup.git`
+`./go.sh -p ubuntu -s`
 
-## Update
-`git submodule update --recursive --remote`
+## Module index
+[**here**](http://docs.ansible.com/ansible/latest/list_of_all_modules.html)
 

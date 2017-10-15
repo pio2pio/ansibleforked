@@ -1,0 +1,30 @@
+[global_config]
+  suppress_multiple_term_dialog = True
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_term = 0541c5b3-b017-46d8-abc3-76a031184982
+      last_active_window = True
+      maximised = False
+      order = 0
+      parent = ""
+      position = 215:151
+      size = 1340, 662
+      title = /bin/bash
+      type = Window
+    [[[terminal1]]]
+      order = 0
+      parent = child0
+      profile = default
+      title = Terminal
+      type = Terminal
+      uuid = 0541c5b3-b017-46d8-abc3-76a031184982
+[plugins]
+[profiles]
+  [[default]]
+    cursor_color = "#aaaaaa"
+    font = Monospace 8
+    scrollback_infinite = True
+    use_system_font = False

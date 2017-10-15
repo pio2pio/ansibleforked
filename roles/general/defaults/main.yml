@@ -1,0 +1,12 @@
+---
+
+libraries_apt:
+- tree
+- vlc
+- xclip
+- baobab
+- indicator-sysmonitor
+
+libraries_pip:
+  - powerline-shell
+

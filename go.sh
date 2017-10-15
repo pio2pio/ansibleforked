@@ -1,15 +1,76 @@
 #!/bin/bash
+source ./scripts/setup.sh
 
-path_config="$(pwd)/ansible-sys/ansible.cfg"
-path_hosts="$(pwd)/ansible-sys/hosts"
-path_roles="$(pwd)/ansible-sys/roles/"
+#######################################################################
+# Functions
 
-sed -i 's:\(inventory.*=\).*:\1 '"${path_hosts}"':g' ${path_config}
-sed -i 's:\(roles_path.*=\).*:\1 '"${path_roles}"':g' ${path_config}
 
-export ANSIBLE_CONFIG="${path_config}"
+usage () {
+  PRG=$(basename $0)
+  echo "$PRG -p PLAYBOOK [-v VERBOSITY] [-s] [-h]"
+  echo "     -a PLAYBBOOK     path to playbook"
+  echo "     -v VERBOSITY     v, vv, vvv, vvvv"
+  echo "     -s               run as sudo"
+  echo "     -h               show help"
+  exit 0
+}
+
+get_playbook () {
+  playbook="playbooks/${1}.yml"
+  echo $playbook
+}
+
+#######################################################################
+# Get Input
+
+while getopts ":p:v:sh" arg; do
+  case $arg in
+    p)
+      playbook=$(get_playbook "${OPTARG}")
+      ;;
+    v)
+      verbosity="-${OPTARG}"
+      ;;
+    s)
+      sudo="--ask-become-pass"
+      ;;
+    h)
+      usage
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      exit 1
+      ;;
+    :)
+      echo "Option -$OPTARG requires an argument." >&2
+      exit 1
+      ;;
+  esac
+done
+
+# Check mandatory fields
+mandatory_fields=( "playbook" )
+mandatory_fields_set=true
+for arg in ${mandatory_fields[@]}; do
+  if [ -z "${!arg}" ]; then
+    echo "Missing argument: ${arg^^}"
+    mandatory_fields_set=false
+  fi
+done
+if [ ${mandatory_fields_set} = false ]; then
+  usage
+  exit 1
+fi
+
+# Check playbook exists
+if [ ! -f ${playbook} ]; then
+  echo "'${playbook}' does not exist"
+  exit 1
+fi
 
 #######################################################################
 
-ansible-playbook build.yml
+exe="ansible-playbook ${playbook} ${verbosity} ${sudo}"
+echo "${exe}"
+eval "${exe}"
 
