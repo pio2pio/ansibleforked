@@ -6,6 +6,9 @@
   connection: local
   gather_facts: yes
 
+  vars:
+  - gui: true
+
   pre_tasks:
   - debug:
       msg: "Any prereq tasks go here"
@@ -14,5 +17,5 @@
   - { role: prereq }
   - { role: general }
   - { role: vim }
-  - { role: developer } 
+  - { role: developer }
 

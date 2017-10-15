@@ -9,6 +9,6 @@
 - name: "libraries | pip"
   pip:
     name: "{{ item }}"
-    state: "latest"
+    state: "present"
   with_items: "{{ libraries_pip }}"
 

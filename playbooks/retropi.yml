@@ -6,9 +6,13 @@
   connection: local
   gather_facts: yes
 
+  vars:
+  - gui: false
+
   pre_tasks:
   - debug:
       msg: "Any prereq tasks go here"
 
   roles:
   - { role: prereq }
+

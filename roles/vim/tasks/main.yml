@@ -1,8 +1,33 @@
 ---
 
-- name: "libraries | apt | vim"
+- name: "vim | install"
   apt:
     name: "{{ item }}"
     state: "latest"
   with_items: "{{ libraries_apt }}"
+
+- name: "vim | config | .vimrc"
+  template:
+    src: ".vimrc.j2"
+    dest: "/root/.vimrc"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: "vim | config | vundle"
+  git:
+    repo: "http://github.com/gmarik/vundle.git"
+    dest: "/root/.vim/bundle/vundle"
+    update: no
+
+- name: "vim | config | plugins"
+  command: "vim -E -s -c 'source ~/.vimrc' -c PluginInstall -c qa"
+
+- name: "vim | config | fonts"
+  copy:
+    src: "PowerlineSymbols.otf"
+    dest: "/usr/local/share/fonts/"
+    owner: root
+    group: root
+    mode: 0644
 
