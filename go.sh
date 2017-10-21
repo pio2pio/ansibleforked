@@ -78,3 +78,5 @@ exe="ansible-playbook ${playbook} ${verbosity} ${diff} ${sudo}"
 echo "${exe}"
 eval "${exe}"
 
+rm $(find . -type f -name "*.retry")
+

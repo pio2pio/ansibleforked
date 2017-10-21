@@ -1,0 +1,17 @@
+---
+
+libraries_apt:
+  - unzip
+
+java_dir: "/lib/jvm"
+java_default: "jdk-8u151"
+java_repo: "http://download.oracle.com/otn-pub/java/jdk"
+
+java:
+  - name: "jdk-8u151"
+    zip: "jdk-8u151-linux-x64.tar.gz"
+    url: "{{ java_repo }}/8u151-b12/e758a0de34e24606bca991d704f6dcbf/jdk-8u151-linux-x64.tar.gz"
+  - name: "jdk-9.0.1"
+    zip: "jdk-9.0.1_linux-x64_bin.tar.gz"
+    url: "{{ java_repo }}/9.0.1+11/jdk-9.0.1_linux-x64_bin.tar.gz"
+

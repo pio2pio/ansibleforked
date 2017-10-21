@@ -26,4 +26,5 @@
     - { role: prereq }
     - { role: vim }
     - { role: powerline-shell }
+    - { role: java }
 
