@@ -12,7 +12,6 @@ sudo apt-get -y install lib32ncurses5
 sudo apt-get -y install lib32stdc++6
 
 printf "****************\nInstalling APT Applications\n****************\n"
-# sudo apt-get -y install vim                          [~/scripts/install-apps-vim.sh]
 sudo apt-get -y install tree
 sudo apt-get -y install vlc
 sudo apt-get -y install xclip
@@ -21,7 +20,4 @@ sudo apt-get -y install ruby
 sudo apt-get -y install indicator-sysmonitor
 sudo apt-get -y install terminator
 sudo apt-get -y install keychain
-
-printf "****************\nInstalling PIP Applications\n****************\n"
-sudo pip install powerline-shell
 

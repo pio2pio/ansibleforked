@@ -16,7 +16,6 @@ sudo mkdir -p  /etc/ansible
 sudo cp        ./cfg/.bashrc                           /root        # [Bash]
 sudo cp        ./cfg/.bash_functions                   /root        # [Bash]
 sudo cp        ./cfg/.bash_aliases                     /root        # [Bash]
-sudo cp        ./cfg/.powerline-shell.json             /root        # [Powerline]
 sudo cp        ./cfg/etc/ansible/ansible.cfg           /etc/ansible # [Ansible]
 
 # User
@@ -25,7 +24,6 @@ sudo cp        ./cfg/etc/ansible/ansible.cfg           /etc/ansible # [Ansible]
      cp        ./cfg/.bashrc                           ~            # [Bash]
      cp        ./cfg/.bash_functions                   ~            # [Bash]
      cp        ./cfg/.bash_aliases                     ~            # [Bash]
-     cp        ./cfg/.powerline-shell.json             ~            # [Powerline]
      cp        ./cfg/.indicator-sysmonitor.json        ~            # [SysMonitor]
      cp    -rf ./cfg/.aws                              ~            # [AWS]
      cp    -rf ./cfg/.config                           ~            # [autostart] [Terminator] [desktopimages]

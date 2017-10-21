@@ -2,7 +2,7 @@
 
 #################################################################
 
-- name: "apt | install packages"
+- name: "pip | install packages"
   apt:
     name: "{{ item }}"
     state: "latest"
@@ -10,24 +10,13 @@
 
 #################################################################
 
-- name: "copy | .vimrc"
+- name: "copy | .powerline-shell.json"
   template:
-    src: ".vimrc.j2"
-    dest: "{{ item.home }}/.vimrc"
+    src: ".powerline-shell.json.j2"
+    dest: "{{ item.home }}/.powerline-shell.json"
     owner: "{{ item.name }}"
     group: "{{ item.name }}"
     mode: 0644
-  with_items: "{{ all_users }}"
-
-- name: "git | pull vundle"
-  git:
-    repo: "http://github.com/gmarik/vundle.git"
-    dest: "{{ item.home }}/.vim/bundle/vundle"
-    update: no
-  with_items: "{{ all_users }}"
-
-- name: "cmd | update plugins"
-  command: "vim -E -s -c 'source {{ item.home }}/.vimrc' -c PluginInstall -c qa"
   with_items: "{{ all_users }}"
 
 #################################################################

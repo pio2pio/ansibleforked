@@ -24,8 +24,8 @@
 
   roles:
     - { role: prereq }
+    - { role: vim }
+    - { role: powerline-shell }
     - { role: general }
     - { role: wallpaper }
-    - { role: vim }
-    - { role: developer }
 
