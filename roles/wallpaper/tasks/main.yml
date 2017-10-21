@@ -18,7 +18,7 @@
 
 - name: "copy | wallpaper resources"
   copy:
-    src: '{{ wallpapers_dir }}'
+    src: '.'
     dest: '/{{ wallpapers_dir }}/'
 
 - name: "copy | wallpaper service"
@@ -28,8 +28,7 @@
     owner: root
     group: root
     mode: 0755
-
-#################################################################
+  notify: "service | start"
 
 - name: "copy | systemd service"
   template:
@@ -38,8 +37,11 @@
     owner: root
     group: root
     mode: 0755
+  notify: "service | start"
 
-- name: "service | install service"
+#################################################################
+
+- name: "service | start"
   service:
     name: '{{ service_name }}'
     enabled: yes

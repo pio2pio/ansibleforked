@@ -13,8 +13,11 @@ get_random_picture() {
 }
 
 change_background() {
-  su - {{ primary_user.name }} -c "gsettings set org.gnome.desktop.background picture-uri file:///${PICTURE}"
-  echo "Changed Background: ${PICTURE}"
+  echo "--------------------------------------------------"
+  echo "PID=${PID} | DBUS_SESSION_BUS_ADDRESS=${DBUS_SESSION_BUS_ADDRESS}"
+  echo "Current Background:: $(gsettings get org.gnome.desktop.background picture-uri)"
+  su - {{ primary_user.name }} -c "DISPLAY=:0 GSETTINGS_BACKEND=dconf gsettings set org.gnome.desktop.background picture-uri file:///${PICTURE}"
+  echo "Changed Background:: $(gsettings get org.gnome.desktop.background picture-uri)"
 }
 
 WALLPAPER_DIR="/{{ wallpapers_dir }}/space_abstract/"
