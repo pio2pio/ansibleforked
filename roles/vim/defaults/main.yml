@@ -1,7 +1,6 @@
 ---
 
-gui: True
-
 libraries_apt:
-- vim
+  - vim
+  - git
 

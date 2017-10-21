@@ -7,11 +7,20 @@
   gather_facts: yes
 
   vars:
-  - gui: true
+    - gui: True
+      root_user:
+        - name: 'root'
+          home: '/root'
+      primary_user:
+        - name: 'steve'
+          home: '/home/steve'
+      all_users:
+        - '{{ root_user }}'
+        - '{{ primary_user }}'
 
   pre_tasks:
-  - debug:
-      msg: "Any prereq tasks go here"
+    - debug:
+        msg: "Any prereq tasks go here"
 
   roles:
     - { role: prereq }
