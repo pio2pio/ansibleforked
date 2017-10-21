@@ -14,8 +14,9 @@
       msg: "Any prereq tasks go here"
 
   roles:
-  - { role: prereq }
-  - { role: general }
-  - { role: vim }
-  - { role: developer }
+    - { role: prereq }
+    - { role: general }
+    - { role: wallpaper }
+    - { role: vim }
+    - { role: developer }
 

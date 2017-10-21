@@ -1,0 +1,36 @@
+#!/bin/bash
+
+set_dbus() {
+  PID=$(pgrep -u ${USER} gnome-session)
+  DBUS_SESSION_BUS_ADDRESS=$(grep -z DBUS_SESSION_BUS_ADDRESS /proc/${PID}/environ|cut -d= -f2-)
+
+  export DBUS_SESSION_BUS_ADDRESS
+}
+
+get_random_picture() {
+  RAND=$(shuf -i1-${FILES_IN_DIR_CT} -n1)
+  PICTURE=${FILES_IN_DIR[$!RAND-1]}
+}
+
+change_background() {
+  su - $USER -c "gsettings set org.gnome.desktop.background picture-uri file:///${PICTURE}"
+  echo "Changed Background: ${PICTURE}"
+}
+
+USER="steve"
+WALLPAPER_DIR="/{{ wallpapers_dir }}/space_abstract/"
+SLEEP=1m
+
+###############################################################
+{% raw %}
+FILES_IN_DIR=( ${WALLPAPER_DIR}* )
+FILES_IN_DIR_CT="${#FILES_IN_DIR[@]}"
+{% endraw %}
+
+while (true); do
+  set_dbus
+  get_random_picture
+  change_background
+  sleep ${SLEEP}
+done
+

@@ -1,0 +1,41 @@
+---
+
+- name: "mkdir structure"
+  file:
+    name:
+      - '/{{ service_dir }}'
+      - '/{{ wallpapers_dir }}'
+    state: directory
+    owner: root
+    group: root
+    mode: 0644
+
+- name: "copy | wallpaper resources"
+  copy:
+    src: '{{ wallpapers_dir }}'
+    dest: '/{{ wallpapers_dir }}/'
+
+- name: "copy | wallpaper service"
+  template:
+    src: "{{ service_dir }}/{{ service_name }}.sh.j2"
+    dest: "/{{ service_dir }}/{{ service_name }}.sh"
+    owner: root
+    group: root
+    mode: 0755
+
+#################################################################
+
+- name: "copy | systemd service"
+  template:
+    src: '{{ systemd_dir }}/{{ service_name }}.service.j2'
+    dest: '/{{ systemd_dir }}/{{ service_name }}.service'
+    owner: root
+    group: root
+    mode: 0755
+
+- name: "service | install service"
+  service:
+    name: '{{ service_name }}'
+    enabled: yes
+    state: started
+
