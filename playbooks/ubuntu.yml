@@ -9,11 +9,11 @@
   vars:
     - gui: True
       root_user:
-        - name: 'root'
-          home: '/root'
+        name: 'root'
+        home: '/root'
       primary_user:
-        - name: 'steve'
-          home: '/home/steve'
+        name: 'steve'
+        home: '/home/steve'
       all_users:
         - '{{ root_user }}'
         - '{{ primary_user }}'
@@ -29,4 +29,5 @@
     - { role: java }
     - { role: general }
     - { role: wallpaper }
+    - { role: system-monitor }
 

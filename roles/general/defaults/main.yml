@@ -5,8 +5,4 @@ libraries_apt:
 - vlc
 - xclip
 - baobab
-- indicator-sysmonitor
-
-libraries_pip:
-  - powerline-shell
 
