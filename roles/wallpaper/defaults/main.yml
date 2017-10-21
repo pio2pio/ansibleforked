@@ -3,7 +3,7 @@
 service_name: ofi-wallpaper
 service_desc: "OurFriendIrony Wallpaper"
 
-service_dir: 'lib/ofi-wallpaper'
-systemd_dir: 'lib/systemd/system'
-wallpapers_dir: 'lib/ofi-wallpaper/resources'
+service_dir: lib/ofi-wallpaper
+systemd_dir: lib/systemd/system
+wallpapers_dir: lib/ofi-wallpaper/resources
 

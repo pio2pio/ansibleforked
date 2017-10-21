@@ -2,13 +2,17 @@
 
 - name: "mkdir structure"
   file:
-    name:
-      - '/{{ service_dir }}'
-      - '/{{ wallpapers_dir }}'
+    path: '{{ item }}'
     state: directory
     owner: root
     group: root
     mode: 0644
+  with_items:
+    - '/{{ systemd_dir}}'
+    - '/{{ service_dir }}'
+    - '/{{ wallpapers_dir }}'
+
+#################################################################
 
 - name: "copy | wallpaper resources"
   copy:
