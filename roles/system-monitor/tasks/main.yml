@@ -2,6 +2,14 @@
 
 #################################################################
 
+- name: "apt | add repository"
+  apt_repository:
+    repo: "{{ item }}"
+    state: "present"
+  with_items: "{{ repos_apt }}"
+
+#################################################################
+
 - name: "apt | install packages"
   apt:
     name: "{{ item }}"
@@ -9,6 +17,14 @@
   with_items: "{{ libraries_apt }}"
 
 #################################################################
+
+- name: "mkdir"
+  file:
+    path: "{{ primary_user.home }}/.config/autostart"
+    state: "directory"
+    owner: "{{ primary_user.name }}"
+    group: "{{ primary_user.name }}"
+    mode: 0644
 
 - name: "copy | config"
   template:
