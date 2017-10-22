@@ -1,0 +1,38 @@
+---
+
+#################################################################
+
+- name: "apt | install"
+  apt:
+    name: "{{ item }}"
+    state: "latest"
+  with_items: "{{ libraries_apt }}"
+
+#################################################################
+
+- name: "apt | remove"
+  apt:
+    name: "{{ item }}"
+    state: "absent"
+  with_items: "{{ libraries_apt_remove }}"
+
+#################################################################
+
+- name: "mkdir"
+  file:
+    path: "{{ primary_user.home }}/.config/terminator"
+    state: directory
+    owner: "{{ primary_user.id }}"
+    group: "{{ primary_user.id }}"
+    mode: 0755
+
+- name: "copy | config"
+  template:
+    src: "config.j2"
+    dest: "{{ primary_user.home }}/.config/terminator/config"
+    owner: "{{ primary_user.id }}"
+    group: "{{ primary_user.id }}"
+    mode: 0644
+
+#################################################################
+

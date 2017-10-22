@@ -37,4 +37,5 @@
     - { role: wallpaper }
     - { role: system-monitor }
     - { role: google-chrome }
+    - { role: terminator }
 
