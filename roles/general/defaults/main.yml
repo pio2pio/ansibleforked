@@ -1,8 +1,12 @@
 ---
 
+libraries_apt_remove:
+  - libreoffice*
+#  - firefox
+
 libraries_apt:
-- tree
-- vlc
-- xclip
-- baobab
+  - tree
+  - vlc
+  - xclip
+  - baobab
 
