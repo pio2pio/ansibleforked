@@ -35,7 +35,7 @@
   get_url:
     url: "{{ android.url }}{{ android.zip }}"
     dest: "/tmp/{{ android.zip }}"
-    creates: "{{ android.home }}/android-studio/"
+  creates: "{{ android.home }}/android-studio/"
 
 - name: "unpack | android"
   unarchive:
@@ -51,7 +51,7 @@
   get_url:
     url: "{{ intellij.url }}{{ intellij.zip }}"
     dest: "/tmp/{{ intellij.zip }}"
-    creates: "{{ intellij.home }}/idea-IC-172.4343.14/"
+  creates: "{{ intellij.home }}/idea-IC-172.4343.14/"
 
 - name: "unpack | intellij"
   unarchive:
@@ -67,7 +67,7 @@
   get_url:
     url: "{{ terraform.url }}{{ terraform.zip }}"
     dest: "/tmp/{{ terraform.zip }}"
-    creates: "{{ terraform.home }}/terraform"
+  creates: "{{ terraform.home }}/terraform"
 
 - name: "unpack | terraform"
   unarchive:

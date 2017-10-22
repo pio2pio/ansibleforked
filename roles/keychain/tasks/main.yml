@@ -26,7 +26,7 @@
     owner: "{{ item.id }}"
     group: "{{ item.id }}"
     mode: 0644
-    creates: "{{ item.home }}/.config/keychain/config"
+  creates: "{{ item.home }}/.config/keychain/config"
   with_items: "{{ all_users }}"
 
 #################################################################
