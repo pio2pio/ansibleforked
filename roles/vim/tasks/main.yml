@@ -14,8 +14,8 @@
   template:
     src: ".vimrc.j2"
     dest: "{{ item.home }}/.vimrc"
-    owner: "{{ item.name }}"
-    group: "{{ item.name }}"
+    owner: "{{ item.id }}"
+    group: "{{ item.id }}"
     mode: 0644
   with_items: "{{ all_users }}"
 
@@ -45,8 +45,8 @@
   copy:
     src: "10-powerline-symbols.conf"
     dest: "{{ item.home }}/.config/fontconfig/fonts.conf/"
-    owner: "{{ item.name }}"
-    group: "{{ item.name }}"
+    owner: "{{ item.id }}"
+    group: "{{ item.id }}"
     mode: 0644
   with_items: "{{ all_users }}"
   when: gui

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set_dbus() {
-  PID=$(pgrep -u {{ primary_user.name }} gnome-session)
+  PID=$(pgrep -u {{ primary_user.id }} gnome-session)
   DBUS_SESSION_BUS_ADDRESS=$(grep -z DBUS_SESSION_BUS_ADDRESS /proc/${PID}/environ|cut -d= -f2-)
 
   export DBUS_SESSION_BUS_ADDRESS
@@ -15,9 +15,10 @@ get_random_picture() {
 change_background() {
   echo "--------------------------------------------------"
   echo "PID=${PID} | DBUS_SESSION_BUS_ADDRESS=${DBUS_SESSION_BUS_ADDRESS}"
-  echo "Current Background:: $(gsettings get org.gnome.desktop.background picture-uri)"
-  su - {{ primary_user.name }} -c "DISPLAY=:0 GSETTINGS_BACKEND=dconf gsettings set org.gnome.desktop.background picture-uri file:///${PICTURE}"
-  echo "Changed Background:: $(gsettings get org.gnome.desktop.background picture-uri)"
+  echo "Current Background :: $(gsettings get org.gnome.desktop.background picture-uri)"
+  echo "New Background     :: ${PICTURE}"
+  su - {{ primary_user.id }} -c "DISPLAY=:0 GSETTINGS_BACKEND=dconf gsettings set org.gnome.desktop.background picture-uri file:///${PICTURE}"
+  echo "Changed Background :: $(gsettings get org.gnome.desktop.background picture-uri)"
 }
 
 WALLPAPER_DIR="/{{ wallpapers_dir }}/space_abstract/"

@@ -9,14 +9,14 @@
   vars:
     - gui: False
       root_user:
-        name: 'root'
+        id: 'root'
         home: '/root'
-        description: 'root'
+        name: 'root'
         email: 'root@root.com'
       primary_user:
-        name: 'pi'
+        id: 'pi'
         home: '/home/pi'
-        description: 'Steve Stevens'
+        name: 'Steve Stevens'
         email: 'steve.h.i.stevens@gmail.com'
       all_users:
         - '{{ root_user }}'

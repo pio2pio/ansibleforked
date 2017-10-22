@@ -14,8 +14,8 @@
   template:
     src: ".gitconfig.j2"
     dest: "{{ item.home }}/.gitconfig"
-    owner: "{{ item.name }}"
-    group: "{{ item.name }}"
+    owner: "{{ item.id }}"
+    group: "{{ item.id }}"
     mode: 0644
   with_items: "{{ all_users }}"
 

@@ -22,24 +22,24 @@
   file:
     path: "{{ primary_user.home }}/.config/autostart"
     state: "directory"
-    owner: "{{ primary_user.name }}"
-    group: "{{ primary_user.name }}"
+    owner: "{{ primary_user.id }}"
+    group: "{{ primary_user.id }}"
     mode: 0644
 
 - name: "copy | config"
   template:
     src: ".indicator-sysmonitor.json.j2"
     dest: "{{ primary_user.home }}/.indicator-sysmonitor.json"
-    owner: "{{ primary_user.name }}"
-    group: "{{ primary_user.name }}"
+    owner: "{{ primary_user.id }}"
+    group: "{{ primary_user.id }}"
     mode: 0644
 
 - name: "copy | autostart"
   template:
     src: "indicator-sysmonitor.desktop.j2"
     dest: "{{ primary_user.home }}/.config/autostart/indicator-sysmonitor.desktop"
-    owner: "{{ primary_user.name }}"
-    group: "{{ primary_user.name }}"
+    owner: "{{ primary_user.id }}"
+    group: "{{ primary_user.id }}"
     mode: 0644
 
 #################################################################
