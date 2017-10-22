@@ -1,5 +1,9 @@
 ---
 
-chrome_url: "https://dl.google.com/linux/direct/"
-chrome_file: "google-chrome-stable_current_amd64.deb"
+libraries_apt_remove:
+  - firefox
+
+chrome:
+  url: "https://dl.google.com/linux/direct/"
+  file: "google-chrome-stable_current_amd64.deb"
 

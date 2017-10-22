@@ -2,14 +2,23 @@
 
 #################################################################
 
+- name: "apt | remove"
+  apt:
+    name: "{{ item }}"
+    state: "absent"
+    autoremove: yes
+  with_items: "{{ libraries_apt_remove }}"
+
+#################################################################
+
 - name: "wget | deb"
   get_url:
-    url: "{{ chrome_url }}{{ chrome_file }}"
-    dest: "/tmp/{{ chrome_file }}"
+    url: "{{ chrome.url }}{{ chrome.file }}"
+    dest: "/tmp/{{ chrome.file }}"
 
 - name: "apt | install"
   apt:
-    deb: "/tmp/{{ chrome_file }}"
+    deb: "/tmp/{{ chrome.file }}"
     state: present
 
 #################################################################

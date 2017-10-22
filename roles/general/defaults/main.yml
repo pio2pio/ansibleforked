@@ -6,7 +6,6 @@ libraries_apt_remove:
   - gnome-mines
   - gnome-mahjongg
   - aisleriot         # Solitaire
-#  - firefox
 
 libraries_apt:
   - tree
