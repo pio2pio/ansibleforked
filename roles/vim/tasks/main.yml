@@ -2,7 +2,7 @@
 
 #################################################################
 
-- name: "apt | install packages"
+- name: "apt | install"
   apt:
     name: "{{ item }}"
     state: "latest"
@@ -26,7 +26,19 @@
     update: no
   with_items: "{{ all_users }}"
 
+- name: "chmod | .vim"
+  file:
+    dest: "{{ item.home }}/.vim/"
+    state: directory
+    recurse: yes
+    owner: "{{ item.id }}"
+    group: "{{ item.id }}"
+    mode: 0755
+  with_items: "{{ all_users }}"
+
 - name: "cmd | update plugins"
+  become: yes
+  become_user: "{{ item.id }}"
   command: "vim -E -s -c 'source {{ item.home }}/.vimrc' -c PluginInstall -c qa"
   with_items: "{{ all_users }}"
 
