@@ -3,10 +3,10 @@
 #################################################################
 
 - name: "pip | install packages"
-  apt:
+  pip:
     name: "{{ item }}"
     state: "latest"
-  with_items: "{{ libraries_apt }}"
+  with_items: "{{ libraries_pip }}"
 
 #################################################################
 
