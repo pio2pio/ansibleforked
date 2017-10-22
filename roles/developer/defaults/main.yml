@@ -31,3 +31,8 @@ terraform:
   zip: "terraform_0.10.7_linux_amd64.zip"
   home: "/usr/lib/terraform"
 
+gradle:
+  url: "https://services.gradle.org/distributions/"
+  zip: "gradle-4.1-bin.zip"
+  home: "/usr/lib/gradle"
+

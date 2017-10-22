@@ -108,7 +108,7 @@ fi
 
 ## Path
   export JAVA_HOME="{{ java_dir }}/{{ java_default }}"
-  export GRADLE_HOME="/usr/lib/gradle/gradle-4.1"
+  export GRADLE_HOME="{{ gradle.home }}/gradle-4.1"
   export TERRAFORM_HOME="{{ terraform.home }}"
 
 if [ -n "${TERRAFORM_HOME}" ]; then

@@ -14,6 +14,7 @@
     - "{{ android.home }}"
     - "{{ intellij.home }}"
     - "{{ terraform.home }}"
+    - "{{ gradle.home }}"
 
 #################################################################
 
@@ -28,6 +29,22 @@
     name: "{{ item }}"
     state: "latest"
   with_items: "{{ libraries_pip }}"
+
+#################################################################
+
+- name: "gradle | wget"
+  get_url:
+    url: "{{ gradle.url }}{{ gradle.zip }}"
+    dest: "/tmp/{{ gradle.zip }}"
+  creates: "{{ gradle.home }}/gradle/"
+
+- name: "gradle | unpack"
+  unarchive:
+    src: "/tmp/{{ gradle.zip }}"
+    dest: "{{ gradle.home }}"
+    owner: "{{ primary_user.id }}"
+    group: "{{ primary_user.id }}"
+    creates: "{{ gradle.home }}/gradle/"
 
 #################################################################
 
@@ -96,12 +113,6 @@
     state: latest
     update_cache: yes
   notify: "docker | service | start"
-
-- name: "docker | chmod"
-  file:
-    name: "{{ docker.dir }}"
-    state: file
-    mode: 0666
 
 #################################################################
 
