@@ -34,8 +34,10 @@
     - { role: powerline-shell }
     - { role: java }
     - { role: general }
+    - { role: keychain }
     - { role: wallpaper }
     - { role: system-monitor }
     - { role: google-chrome }
     - { role: terminator }
+    - { role: developer }
 

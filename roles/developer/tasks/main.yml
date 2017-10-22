@@ -1,5 +1,22 @@
 ---
 
+#################################################################
+
+- name: "mkdir"
+  file:
+    name: "{{ item }}"
+    state: directory
+    recurse: yes
+    owner: "{{ primary_user.id }}"
+    group: "{{ primary_user.id }}"
+    mode: 0755
+  with_items:
+    - "{{ android.home }}"
+    - "{{ intellij.home }}"
+    - "{{ terraform.home }}"
+
+#################################################################
+
 - name: "libraries | apt"
   apt:
     name: "{{ item }}"
@@ -11,4 +28,48 @@
     name: "{{ item }}"
     state: "latest"
   with_items: "{{ libraries_pip }}"
+
+#################################################################
+
+- name: "wget | android"
+  get_url:
+    url: "{{ android.url }}{{ android.zip }}"
+    dest: "/tmp/{{ android.zip }}"
+  creates: "{{ android.home }}/android-studio/"
+
+- name: "unpack | android"
+  unarchive:
+    src: "/tmp/{{ android.zip }}"
+    dest: "{{ android.home }}"
+  creates: "{{ android.home }}/android-studio/"
+
+#################################################################
+
+- name: "wget | intellij"
+  get_url:
+    url: "{{ intellij.url }}{{ intellij.zip }}"
+    dest: "/tmp/{{ intellij.zip }}"
+  creates: "{{ intellij.home }}/idea-IC-172.4343.14/"
+
+- name: "unpack | intellij"
+  unarchive:
+    src: "/tmp/{{ intellij.zip }}"
+    dest: "{{ intellij.home }}"
+  creates: "{{ intellij.home }}/idea-IC-172.4343.14/"
+
+#################################################################
+
+- name: "wget | terraform"
+  get_url:
+    url: "{{ terraform.url }}{{ terraform.zip }}"
+    dest: "/tmp/{{ terraform.zip }}"
+  creates: "{{ terraform.home }}/terraform"
+
+- name: "unpack | terraform"
+  unarchive:
+    src: "/tmp/{{ terraform.zip }}"
+    dest: "{{ terraform.home }}"
+  creates: "{{ terraform.home }}/terraform"
+
+#################################################################
 

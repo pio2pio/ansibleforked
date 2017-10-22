@@ -109,10 +109,10 @@ fi
 ## Path
   export JAVA_HOME="{{ java_dir }}/{{ java_default }}"
   export GRADLE_HOME="/usr/lib/gradle/gradle-4.1"
-  export TERRAFORM_HOME="{{ item.home }}/.tfenv"
+  export TERRAFORM_HOME="{{ terraform.home }}"
 
 if [ -n "${TERRAFORM_HOME}" ]; then
-  export PATH="${TERRAFORM_HOME}/bin:${PATH}"
+  export PATH="${TERRAFORM_HOME}:${PATH}"
 fi
 if [ -n "${JAVA_HOME}" ]; then
   export PATH="${JAVA_HOME}/bin:${PATH}"

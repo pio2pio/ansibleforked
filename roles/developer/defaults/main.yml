@@ -1,11 +1,25 @@
 ---
 
 libraries_apt:
-- ruby
-- terminator
-- keychain
+  - unzip
+  - ruby
 
 libraries_pip:
-- ansible
-- awscli
+  - ansible
+  - awscli
+
+android:
+  url: "https://dl.google.com/dl/android/studio/ide-zips/2.3.3.0/"
+  zip: "android-studio-ide-162.4069837-linux.zip"
+  home: "/usr/lib/android-studio"
+
+intellij:
+  url: "https://download-cf.jetbrains.com/idea/"
+  zip: "ideaIC-2017.2.5-no-jdk.tar.gz"
+  home: "/usr/lib/intellij"
+
+terraform:
+  url: "https://releases.hashicorp.com/terraform/0.10.7/"
+  zip: "terraform_0.10.7_linux_amd64.zip"
+  home: "/usr/lib/terraform"
 

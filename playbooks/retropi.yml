@@ -34,4 +34,5 @@
     - { role: powerline-shell }
     - { role: java }
     - { role: general }
+    - { role: keychain }
 
