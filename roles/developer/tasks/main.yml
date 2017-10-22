@@ -2,7 +2,7 @@
 
 #################################################################
 
-- name: "mkdir"
+- name: "mkdirs"
   file:
     name: "{{ item }}"
     state: directory
@@ -17,13 +17,13 @@
 
 #################################################################
 
-- name: "libraries | apt"
+- name: "apt | install"
   apt:
     name: "{{ item }}"
     state: "latest"
   with_items: "{{ libraries_apt }}"
 
-- name: "libraries | pip"
+- name: "pip | install"
   pip:
     name: "{{ item }}"
     state: "latest"
@@ -31,13 +31,13 @@
 
 #################################################################
 
-- name: "wget | android"
+- name: "android | wget"
   get_url:
     url: "{{ android.url }}{{ android.zip }}"
     dest: "/tmp/{{ android.zip }}"
   creates: "{{ android.home }}/android-studio/"
 
-- name: "unpack | android"
+- name: "android | unpack"
   unarchive:
     src: "/tmp/{{ android.zip }}"
     dest: "{{ android.home }}"
@@ -47,13 +47,13 @@
 
 #################################################################
 
-- name: "wget | intellij"
+- name: "intellij | wget"
   get_url:
     url: "{{ intellij.url }}{{ intellij.zip }}"
     dest: "/tmp/{{ intellij.zip }}"
   creates: "{{ intellij.home }}/idea-IC-172.4343.14/"
 
-- name: "unpack | intellij"
+- name: "intellij | unpack"
   unarchive:
     src: "/tmp/{{ intellij.zip }}"
     dest: "{{ intellij.home }}"
@@ -63,19 +63,45 @@
 
 #################################################################
 
-- name: "wget | terraform"
+- name: "terraform | wget"
   get_url:
     url: "{{ terraform.url }}{{ terraform.zip }}"
     dest: "/tmp/{{ terraform.zip }}"
   creates: "{{ terraform.home }}/terraform"
 
-- name: "unpack | terraform"
+- name: "terraform | unpack"
   unarchive:
     src: "/tmp/{{ terraform.zip }}"
     dest: "{{ terraform.home }}"
     owner: "{{ primary_user.id }}"
     group: "{{ primary_user.id }}"
     creates: "{{ terraform.home }}/terraform"
+
+#################################################################
+
+- name: "docker | apt | key"
+  apt_key:
+    id: "{{ docker.key_id }}"
+    keyserver: "{{ docker.key_server }}"
+    state: present
+
+- name: "docker | apt | repo"
+  apt_repository:
+    repo: "{{ docker.repo }}"
+    state: present
+
+- name: "docker | apt | install"
+  apt:
+    name: "{{ docker.apt }}"
+    state: latest
+    update_cache: yes
+  notify: "docker | service | start"
+
+- name: "docker | chmod"
+  file:
+    name: "{{ docker.dir }}"
+    state: file
+    mode: 0666
 
 #################################################################
 

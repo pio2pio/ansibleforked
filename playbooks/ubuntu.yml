@@ -8,6 +8,7 @@
 
   vars:
     - gui: True
+      system_version: "ubuntu-zesty"
       root_user:
         id: 'root'
         home: '/root'

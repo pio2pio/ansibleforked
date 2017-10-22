@@ -8,6 +8,14 @@ libraries_pip:
   - ansible
   - awscli
 
+docker:
+  key_id: "58118E89F3A912897C070ADBF76221572C52609D"
+  key_server: "hkp://p80.pool.sks-keyservers.net:80"
+  repo: "deb https://apt.dockerproject.org/repo {{ system_version }} main"
+  dir: "/var/run/docker.sock"
+  apt: "docker-engine"
+  service: "docker"
+
 android:
   url: "https://dl.google.com/dl/android/studio/ide-zips/2.3.3.0/"
   zip: "android-studio-ide-162.4069837-linux.zip"
