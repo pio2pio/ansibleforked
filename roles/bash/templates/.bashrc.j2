@@ -59,44 +59,41 @@ if [ -x /usr/bin/dircolors ]; then
   alias egrep='egrep --color=auto'
 fi
 
-alias ll='ls -AlF'
-alias la='ls -A'
-alias l='ls -CF'
-
 if [ -f ~/.bash_functions ]; then
-  . ~/.bash_functions
+  source ~/.bash_functions
 fi
 if [ -f ~/.bash_aliases ]; then
-  . ~/.bash_aliases
+  source ~/.bash_aliases
 fi
 
 #####################################################################
 # Powerline Shell
 
-function _update_ps1() {
-  PS1="$(powerline-shell $?)"
-}
-
-if [ "$TERM" != "linux" ]; then
+if [ -n "$(which powerline-shell)" ]; then
+  function _update_ps1() {
+    PS1="$(powerline-shell $?)"
+  }
   PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
 
 #####################################################################
 # Keychain
 
-KEYCHAIN_CONFIG="${HOME}/.config/keychain/config"
-if [ -f "${KEYCHAIN_CONFIG}" ]; then
-  while read line; do
-    ssh_key="${HOME}/.ssh/${line}"
-    if [ -f "${ssh_key}" ]; then
-      chmod 600 "${ssh_key}"
-      key_chain="${key_chain} ${ssh_key}"
-    fi
-  done < "${KEYCHAIN_CONFIG}"
+if [ -n "$(which keychain)" ]; then
+  KEYCHAIN_CONFIG="{{ item.home }}/.config/keychain/config"
+  if [ -f "${KEYCHAIN_CONFIG}" ]; then
+    while read line; do
+      ssh_key="{{ item.home }}/.ssh/${line}"
+      if [ -f "${ssh_key}" ]; then
+        chmod 600 "${ssh_key}"
+        key_chain="${key_chain} ${ssh_key}"
+      fi
+    done < "${KEYCHAIN_CONFIG}"
 
-  if [ ! -z "${key_chain}" ]; then
-    /usr/bin/keychain ${key_chain}
-    source ~/.keychain/${HOSTNAME}-sh
+    if [ ! -z "${key_chain}" ]; then
+      /usr/bin/keychain ${key_chain}
+      source ~/.keychain/${HOSTNAME}-sh
+    fi
   fi
 fi
 
@@ -104,15 +101,25 @@ fi
 # Exports
 
 ## AWS
+if [ -n "$(which aws)" ]; then
   export AWS_ACCT_ID="847108765099"
   export AWS_ACCESS_KEY="AKIAIPBHHX3MTYMQPPRA"
+fi
 
 ## Path
-  export JAVA_HOME="/usr/lib/jvm/java-8-oracle"
+  export JAVA_HOME="{{ java_dir }}/{{ java_default }}"
   export GRADLE_HOME="/usr/lib/gradle/gradle-4.1"
-  export TERRAFORM_HOME="${HOME}/.tfenv"
+  export TERRAFORM_HOME="{{ item.home }}/.tfenv"
 
-  export PATH="${TERRAFORM_HOME}/bin:${JAVA_HOME}/bin:${GRADLE_HOME}/bin:${PATH}"
+if [ -n "${TERRAFORM_HOME}" ]; then
+  export PATH="${TERRAFORM_HOME}/bin:${PATH}"
+fi
+if [ -n "${JAVA_HOME}" ]; then
+  export PATH="${JAVA_HOME}/bin:${PATH}"
+fi
+if [ -n "${GRADLE_HOME}" ]; then
+  export PATH="${GRADLE_HOME}/bin:${PATH}"
+fi
 
 #####################################################################
 

@@ -29,6 +29,7 @@
   roles:
     - { role: prereq }
     - { role: git }
+    - { role: bash }
     - { role: vim }
     - { role: powerline-shell }
     - { role: java }
