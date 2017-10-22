@@ -1,0 +1,17 @@
+---
+
+#################################################################
+
+- name: "wget | deb"
+  get_url:
+    url: "{{ chrome_url }}{{ chrome_file }}"
+    dest: "/tmp/{{ chrome_file }}"
+
+- name: "apt | install"
+  apt:
+    deb: "/tmp/{{ chrome_file }}"
+    #    state: build-dep
+    state: present
+
+#################################################################
+

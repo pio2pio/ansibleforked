@@ -36,4 +36,5 @@
     - { role: general }
     - { role: wallpaper }
     - { role: system-monitor }
+    - { role: google-chrome }
 
