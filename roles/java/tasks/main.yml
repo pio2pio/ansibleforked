@@ -6,6 +6,9 @@
   file:
     path: "{{ java_dir }}/{{ item.name }}"
     state: directory
+    owner: "{{ primary_user.id }}"
+    group: "{{ primary_user.id }}"
+    mode: 0755
   with_items: "{{ java }}"
 
 #################################################################
@@ -29,6 +32,8 @@
   unarchive:
     src: "/tmp/{{ item.zip }}"
     dest: "{{ java_dir }}/{{ item.name }}"
+    owner: "{{ primary_user.id }}"
+    group: "{{ primary_user.id }}"
     creates: "{{ java_dir }}/{{ item.name }}"
   with_items: "{{ java }}"
 

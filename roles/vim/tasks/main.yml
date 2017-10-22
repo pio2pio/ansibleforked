@@ -48,8 +48,8 @@
   copy:
     src: "PowerlineSymbols.otf"
     dest: "/usr/local/share/fonts/"
-    owner: root
-    group: root
+    owner: "{{ root_user.id }}"
+    group: "{{ root_user.id }}"
     mode: 0644
   when: gui
 

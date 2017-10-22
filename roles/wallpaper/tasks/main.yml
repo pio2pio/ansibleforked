@@ -2,13 +2,13 @@
 
 #################################################################
 
-- name: "mkdir structure"
+- name: "mkdir"
   file:
     path: '{{ item }}'
     state: directory
-    owner: root
-    group: root
-    mode: 0644
+    owner: "{{ root_user.id }}"
+    group: "{{ root_user.id }}"
+    mode: 0755
   with_items:
     - '/{{ systemd_dir}}'
     - '/{{ service_dir }}'
@@ -25,8 +25,8 @@
   template:
     src: "{{ service_dir }}/{{ service_name }}.sh.j2"
     dest: "/{{ service_dir }}/{{ service_name }}.sh"
-    owner: root
-    group: root
+    owner: "{{ root_user.id }}"
+    group: "{{ root_user.id }}"
     mode: 0755
   notify: "service | start"
 
@@ -34,8 +34,8 @@
   template:
     src: '{{ systemd_dir }}/{{ service_name }}.service.j2'
     dest: '/{{ systemd_dir }}/{{ service_name }}.service'
-    owner: root
-    group: root
+    owner: "{{ root_user.id }}"
+    group: "{{ root_user.id }}"
     mode: 0755
   notify: "service | start"
 

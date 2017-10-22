@@ -10,7 +10,7 @@
 
 #################################################################
 
-- name: "apt | install packages"
+- name: "apt | install"
   apt:
     name: "{{ item }}"
     state: "latest"

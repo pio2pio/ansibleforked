@@ -10,7 +10,6 @@
 - name: "apt | install"
   apt:
     deb: "/tmp/{{ chrome_file }}"
-    #    state: build-dep
     state: present
 
 #################################################################
