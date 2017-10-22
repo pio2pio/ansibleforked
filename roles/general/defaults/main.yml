@@ -2,11 +2,15 @@
 
 libraries_apt_remove:
   - libreoffice*
+  - gnome-sudoku
+  - gnome-mines
+  - gnome-mahjongg
+  - aisleriot         # Solitaire
 #  - firefox
 
 libraries_apt:
   - tree
   - vlc
   - xclip
-  - baobab
+  - baobab            # Disk Usage
 

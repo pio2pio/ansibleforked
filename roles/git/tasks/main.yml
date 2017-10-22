@@ -1,0 +1,23 @@
+---
+
+#################################################################
+
+- name: "apt | install"
+  apt:
+    name: "{{ item }}"
+    state: "latest"
+  with_items: "{{ libraries_apt }}"
+
+#################################################################
+
+- name: "copy | config"
+  template:
+    src: ".gitconfig.j2"
+    dest: "{{ item.home }}/.gitconfig"
+    owner: "{{ item.name }}"
+    group: "{{ item.name }}"
+    mode: 0644
+  with_items: "{{ all_users }}"
+
+#################################################################
+

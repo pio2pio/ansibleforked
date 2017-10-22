@@ -9,11 +9,15 @@
   vars:
     - gui: False
       root_user:
-        - name: 'root'
-          home: '/root'
+        name: 'root'
+        home: '/root'
+        description: 'root'
+        email: 'root@root.com'
       primary_user:
-        - name: 'pi'
-          home: '/home/pi'
+        name: 'pi'
+        home: '/home/pi'
+        description: 'Steve Stevens'
+        email: 'steve.h.i.stevens@gmail.com'
       all_users:
         - '{{ root_user }}'
         - '{{ primary_user }}'
@@ -24,6 +28,7 @@
 
   roles:
     - { role: prereq }
+    - { role: git }
     - { role: vim }
     - { role: powerline-shell }
     - { role: java }
