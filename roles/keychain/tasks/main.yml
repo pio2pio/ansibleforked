@@ -2,14 +2,6 @@
 
 #################################################################
 
-- name: "apt | install"
-  apt:
-    name: "{{ item }}"
-    state: "latest"
-  with_items: "{{ libraries_apt }}"
-
-#################################################################
-
 - name: "mkdirs"
   file:
     dest: "{{ item.home }}/.config/keychain"
@@ -19,14 +11,23 @@
     mode: 0755
   with_items: "{{ all_users }}"
 
+#################################################################
+
+- name: "apt | install"
+  apt:
+    name: "{{ item }}"
+    state: "latest"
+  with_items: "{{ libraries_apt }}"
+
+#################################################################
+
 - name: "copy | config"
-  template:
-    src: "config.j2"
+  file:
     dest: "{{ item.home }}/.config/keychain/config"
+    state: touch
     owner: "{{ item.id }}"
     group: "{{ item.id }}"
     mode: 0644
-  creates: "{{ item.home }}/.config/keychain/config"
   with_items: "{{ all_users }}"
 
 #################################################################
