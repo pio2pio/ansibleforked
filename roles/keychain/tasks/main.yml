@@ -1,0 +1,34 @@
+---
+
+#################################################################
+
+- name: "mkdirs"
+  file:
+    dest: "{{ item.home }}/.config/keychain"
+    state: directory
+    owner: "{{ item.id }}"
+    group: "{{ item.id }}"
+    mode: 0755
+  with_items: "{{ all_users }}"
+
+#################################################################
+
+- name: "apt | install"
+  apt:
+    name: "{{ item }}"
+    state: "latest"
+  with_items: "{{ libraries_apt }}"
+
+#################################################################
+
+- name: "copy | config"
+  file:
+    dest: "{{ item.home }}/.config/keychain/config"
+    state: touch
+    owner: "{{ item.id }}"
+    group: "{{ item.id }}"
+    mode: 0644
+  with_items: "{{ all_users }}"
+
+#################################################################
+

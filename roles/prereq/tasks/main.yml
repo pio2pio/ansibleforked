@@ -1,0 +1,21 @@
+---
+
+#################################################################
+
+- name: "apt | update cache"
+  apt:
+    update_cache: yes
+
+- name: "apt | install"
+  apt:
+    name: "{{ item }}"
+    state: "latest"
+  with_items: "{{ libraries_apt }}"
+
+- name: "apt | autoclean"
+  apt:
+    autoclean: yes
+    autoremove: yes
+
+#################################################################
+

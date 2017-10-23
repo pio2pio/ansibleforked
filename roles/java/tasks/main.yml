@@ -1,0 +1,50 @@
+---
+
+#################################################################
+
+- name: "mkdir structure"
+  file:
+    path: "{{ java_dir }}"
+    state: directory
+    owner: "{{ primary_user.id }}"
+    group: "{{ primary_user.id }}"
+    mode: 0755
+
+#################################################################
+
+- name: "apt | install packages"
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ libraries_apt }}"
+
+#################################################################
+
+- name: "wget | java versions"
+  get_url:
+    url: "{{ item.url }}"
+    dest: "/tmp/{{ item.zip }}"
+    headers: "Cookie:oraclelicense=accept-securebackup-cookie"
+  with_items: "{{ java }}"
+
+- name: "unpack | java versions"
+  unarchive:
+    src: "/tmp/{{ item.zip }}"
+    dest: "{{ java_dir }}"
+    owner: "{{ primary_user.id }}"
+    group: "{{ primary_user.id }}"
+    creates: "{{ java_dir }}/{{ item.name }}"
+  with_items: "{{ java }}"
+
+#################################################################
+
+- name: "symlink | set version"
+  file:
+    src: "{{ java_dir }}/{{ java_default }}"
+    dest: "{{ java_dir }}/java"
+    owner: "{{ primary_user.id }}"
+    group: "{{ primary_user.id }}"
+    state: link
+
+#################################################################
+

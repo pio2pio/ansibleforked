@@ -1,0 +1,46 @@
+---
+
+#################################################################
+
+- name: "apt | add repository"
+  apt_repository:
+    repo: "{{ item }}"
+    state: "present"
+  with_items: "{{ repos_apt }}"
+
+#################################################################
+
+- name: "apt | install"
+  apt:
+    name: "{{ item }}"
+    state: "latest"
+  with_items: "{{ libraries_apt }}"
+
+#################################################################
+
+- name: "mkdir"
+  file:
+    path: "{{ primary_user.home }}/.config/autostart"
+    state: "directory"
+    owner: "{{ primary_user.id }}"
+    group: "{{ primary_user.id }}"
+    mode: 0644
+
+- name: "copy | config"
+  template:
+    src: ".indicator-sysmonitor.json.j2"
+    dest: "{{ primary_user.home }}/.indicator-sysmonitor.json"
+    owner: "{{ primary_user.id }}"
+    group: "{{ primary_user.id }}"
+    mode: 0644
+
+- name: "copy | autostart"
+  template:
+    src: "indicator-sysmonitor.desktop.j2"
+    dest: "{{ primary_user.home }}/.config/autostart/indicator-sysmonitor.desktop"
+    owner: "{{ primary_user.id }}"
+    group: "{{ primary_user.id }}"
+    mode: 0644
+
+#################################################################
+

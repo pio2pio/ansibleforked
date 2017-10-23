@@ -1,0 +1,44 @@
+---
+
+- hosts: localhost
+  become: yes
+  become_method: sudo
+  connection: local
+  gather_facts: yes
+
+  vars:
+    - gui: True
+      system_version: "ubuntu-zesty"
+      root_user:
+        id: 'root'
+        home: '/root'
+        name: 'root'
+        email: 'root@root.com'
+      primary_user:
+        id: 'steve'
+        home: '/home/steve'
+        name: 'Steve Stevens'
+        email: 'steve.h.i.stevens@gmail.com'
+      all_users:
+        - '{{ root_user }}'
+        - '{{ primary_user }}'
+
+  pre_tasks:
+    - debug:
+        msg: "Any prereq tasks go here"
+
+  roles:
+    - { role: prereq }
+    - { role: git }
+    - { role: bash }
+    - { role: vim }
+    - { role: powerline-shell }
+    - { role: java }
+    - { role: general }
+    - { role: keychain }
+    - { role: wallpaper }
+    - { role: system-monitor }
+    - { role: google-chrome }
+    - { role: terminator }
+    - { role: developer }
+

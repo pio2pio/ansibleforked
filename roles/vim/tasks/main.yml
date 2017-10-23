@@ -1,0 +1,67 @@
+---
+
+#################################################################
+
+- name: "apt | install"
+  apt:
+    name: "{{ item }}"
+    state: "latest"
+  with_items: "{{ libraries_apt }}"
+
+#################################################################
+
+- name: "copy | .vimrc"
+  template:
+    src: ".vimrc.j2"
+    dest: "{{ item.home }}/.vimrc"
+    owner: "{{ item.id }}"
+    group: "{{ item.id }}"
+    mode: 0644
+  with_items: "{{ all_users }}"
+
+- name: "git | pull vundle"
+  git:
+    repo: "http://github.com/gmarik/vundle.git"
+    dest: "{{ item.home }}/.vim/bundle/vundle"
+    update: no
+  with_items: "{{ all_users }}"
+
+- name: "chmod | .vim"
+  file:
+    dest: "{{ item.home }}/.vim/"
+    state: directory
+    recurse: yes
+    owner: "{{ item.id }}"
+    group: "{{ item.id }}"
+    mode: 0755
+  with_items: "{{ all_users }}"
+
+- name: "cmd | update plugins"
+  become: yes
+  become_user: "{{ item.id }}"
+  command: "vim -E -s -c 'source {{ item.home }}/.vimrc' -c PluginInstall -c qa"
+  with_items: "{{ all_users }}"
+
+#################################################################
+
+- name: "copy | fonts"
+  copy:
+    src: "PowerlineSymbols.otf"
+    dest: "/usr/local/share/fonts/"
+    owner: "{{ root_user.id }}"
+    group: "{{ root_user.id }}"
+    mode: 0644
+  when: gui
+
+- name: "copy | font config"
+  copy:
+    src: "10-powerline-symbols.conf"
+    dest: "{{ item.home }}/.config/fontconfig/fonts.conf/"
+    owner: "{{ item.id }}"
+    group: "{{ item.id }}"
+    mode: 0644
+  with_items: "{{ all_users }}"
+  when: gui
+
+#################################################################
+
