@@ -15,10 +15,3 @@ sudo apt-get install -y python-pip git \
 
 ## Module index
 All Modules are documented [**here**](http://docs.ansible.com/ansible/latest/list_of_all_modules.html)
-____
-
-## Bugs
-- Java
-  - JAVA_HOME set to a dir that is completely empty...
-  - unpack must not be working. libs going somewhere else?
- 
