@@ -4,12 +4,11 @@
 
 - name: "mkdir structure"
   file:
-    path: "{{ java_dir }}/{{ item.name }}"
+    path: "{{ java_dir }}"
     state: directory
     owner: "{{ primary_user.id }}"
     group: "{{ primary_user.id }}"
     mode: 0755
-  with_items: "{{ java }}"
 
 #################################################################
 
@@ -31,7 +30,7 @@
 - name: "unpack | java versions"
   unarchive:
     src: "/tmp/{{ item.zip }}"
-    dest: "{{ java_dir }}/{{ item.name }}"
+    dest: "{{ java_dir }}"
     owner: "{{ primary_user.id }}"
     group: "{{ primary_user.id }}"
     creates: "{{ java_dir }}/{{ item.name }}"
@@ -43,6 +42,8 @@
   file:
     src: "{{ java_dir }}/{{ java_default }}"
     dest: "{{ java_dir }}/java"
+    owner: "{{ primary_user.id }}"
+    group: "{{ primary_user.id }}"
     state: link
 
 #################################################################
