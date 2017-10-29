@@ -14,8 +14,7 @@ ___
 sudo apt-get install -y python-pip git \
 && sudo pip install ansible \
 && git clone https://github.com/OurFriendIrony/ubuntu-setup.git /tmp/ansible \
-&& cd /tmp/ansible \
-&& git checkout ansiblise
+&& cd /tmp/ansible
 ```
 
 ## Run
