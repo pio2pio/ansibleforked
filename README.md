@@ -17,7 +17,7 @@ sudo apt-get install -y python-pip git \
 ```
 
 ## Run
-`./go.sh -p ubuntu -s -d`
+`./go.sh -p ubuntu -s -d`  
 `./go.sh -p retropie -s -d`
 
 ## Help
