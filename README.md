@@ -4,7 +4,9 @@
 
 #### RetroPie
 - Connect Wifi
-- Turn on SSH client
+- sudo raspi-config
+  - 5 --> 2 [Turn on SSH client]
+  - 7 --> 1 [Expand FileSystem]
 ___
 
 ## Bootstap
