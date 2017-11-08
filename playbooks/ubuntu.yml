@@ -8,7 +8,9 @@
 
   vars:
     - gui: True
-      system_version: "ubuntu-zesty"
+      proxy: False
+      system_version: '{{ ansible_distribution | lower }}-{{ ansible_distribution_release | lower }}'
+#      system_version: "ubuntu-zesty"
       root_user:
         id: 'root'
         home: '/root'

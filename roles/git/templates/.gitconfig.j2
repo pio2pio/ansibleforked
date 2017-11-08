@@ -41,4 +41,9 @@
   d       = diff
   s       = status -s -b
   l       = log --pretty='format:%C(yellow)%h %C(blue)%ad %C(reset)%s%C(red)%d %C(green)%an%C(reset), %C(cyan)%ar' --date=short
-
+{% if proxy == True %}
+[http]
+  proxy = http://127.0.0.1:3128
+[https]
+  proxy = https://127.0.0.1:3128
+{% endif %}

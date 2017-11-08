@@ -1,26 +1,25 @@
 ---
 
-- hosts: retropi
+- hosts: localhost
   become: yes
   become_method: sudo
   connection: local
   gather_facts: yes
 
   vars:
-    - gui: False
-      proxy: False
+    - gui: True
+      proxy: True
       system_version: '{{ ansible_distribution | lower }}-{{ ansible_distribution_release | lower }}'
-#      system_version: "raspbian-jessie"
       root_user:
         id: 'root'
         home: '/root'
         name: 'root'
         email: 'root@root.com'
       primary_user:
-        id: 'pi'
-        home: '/home/pi'
+        id: 'engineer'
+        home: '/home/engineer'
         name: 'Steve Stevens'
-        email: 'steve.h.i.stevens@gmail.com'
+        email: 'steven.stevens@travisperkins.co.uk'
       all_users:
         - '{{ root_user }}'
         - '{{ primary_user }}'
@@ -38,4 +37,13 @@
     - { role: java }
     - { role: general }
     - { role: keychain }
+#    - { role: wallpaper }
+    - { role: system-monitor }
+    - { role: google-chrome }
+    - { role: terminator }
+    - { role: developer }
+
+  environment:
+    http_proxy: http://127.0.1.1:3128
+    https_proxy: http://127.0.1.1:3128
 

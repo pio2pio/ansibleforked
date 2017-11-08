@@ -10,6 +10,27 @@
 
 #################################################################
 
+- name: "copy | fonts"
+  copy:
+    src: "PowerlineSymbols.otf"
+    dest: "/usr/local/share/fonts/"
+    owner: "{{ root_user.id }}"
+    group: "{{ root_user.id }}"
+    mode: 0644
+  when: gui
+
+- name: "copy | font config"
+  copy:
+    src: "10-powerline-symbols.conf"
+    dest: "{{ item.home }}/.config/fontconfig/fonts.conf/"
+    owner: "{{ item.id }}"
+    group: "{{ item.id }}"
+    mode: 0644
+  with_items: "{{ all_users }}"
+  when: gui
+
+#################################################################
+
 - name: "copy | .vimrc"
   template:
     src: ".vimrc.j2"
@@ -36,32 +57,11 @@
     mode: 0755
   with_items: "{{ all_users }}"
 
-- name: "cmd | update plugins"
-  become: yes
-  become_user: "{{ item.id }}"
-  command: "vim -E -s -c 'source {{ item.home }}/.vimrc' -c PluginInstall -c qa"
-  with_items: "{{ all_users }}"
-
-#################################################################
-
-- name: "copy | fonts"
-  copy:
-    src: "PowerlineSymbols.otf"
-    dest: "/usr/local/share/fonts/"
-    owner: "{{ root_user.id }}"
-    group: "{{ root_user.id }}"
-    mode: 0644
-  when: gui
-
-- name: "copy | font config"
-  copy:
-    src: "10-powerline-symbols.conf"
-    dest: "{{ item.home }}/.config/fontconfig/fonts.conf/"
-    owner: "{{ item.id }}"
-    group: "{{ item.id }}"
-    mode: 0644
-  with_items: "{{ all_users }}"
-  when: gui
+  #- name: "cmd | update plugins"
+  #  become: yes
+  #  become_user: "{{ item.id }}"
+  #  command: "vim -E -s -c 'source {{ item.home }}/.vimrc' -c PluginUpdate -c qa"
+  #  with_items: "{{ all_users }}"
 
 #################################################################
 
