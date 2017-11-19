@@ -11,7 +11,7 @@ libraries_pip:
 docker:
   key_id: "58118E89F3A912897C070ADBF76221572C52609D"
   key_server: "http://p80.pool.sks-keyservers.net:80"
-  repo: "deb https://apt.dockerproject.org/repo {{ system_version }} main"
+  repo: "deb https://apt.dockerproject.org/repo {{ ansible_distribution | lower }}-{{ ansible_distribution_release | lower }} main"
   dir: "/var/run/docker.sock"
   apt: "docker-engine"
   service: "docker"

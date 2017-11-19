@@ -8,7 +8,6 @@
 
   vars:
     - gui: False
-      system_version: "raspbian-jessie"
       root_user:
         id: 'root'
         home: '/root'
