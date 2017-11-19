@@ -122,6 +122,8 @@
     owner: "{{ primary_user.id }}"
     group: "{{ primary_user.id }}"
     creates: "{{ terraform.home }}/terraform"
+  tags:
+    - terraform
 
 #################################################################
 
@@ -130,11 +132,15 @@
     id: "{{ docker.key_id }}"
     keyserver: "{{ docker.key_server }}"
     state: present
+  tags:
+    - docker
 
 - name: "docker | apt | repo"
   apt_repository:
     repo: "{{ docker.repo }}"
     state: present
+  tags:
+    - docker
 
 - name: "docker | apt | install"
   apt:
