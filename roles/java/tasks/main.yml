@@ -9,6 +9,8 @@
     owner: "{{ primary_user.id }}"
     group: "{{ primary_user.id }}"
     mode: 0755
+  tags:
+    - java
 
 #################################################################
 
@@ -17,6 +19,8 @@
     name: "{{ item }}"
     state: latest
   with_items: "{{ libraries_apt }}"
+  tags:
+    - java
 
 #################################################################
 
@@ -26,6 +30,8 @@
     dest: "/tmp/{{ item.zip }}"
     headers: "Cookie:oraclelicense=accept-securebackup-cookie"
   with_items: "{{ java }}"
+  tags:
+    - java
 
 - name: "unpack | java versions"
   unarchive:
@@ -35,6 +41,8 @@
     group: "{{ primary_user.id }}"
     creates: "{{ java_dir }}/{{ item.name }}"
   with_items: "{{ java }}"
+  tags:
+    - java
 
 #################################################################
 
@@ -45,6 +53,8 @@
     owner: "{{ primary_user.id }}"
     group: "{{ primary_user.id }}"
     state: link
+  tags:
+    - java
 
 #################################################################
 

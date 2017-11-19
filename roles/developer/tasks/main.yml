@@ -15,6 +15,11 @@
     - "{{ intellij.home }}"
     - "{{ terraform.home }}"
     - "{{ gradle.home }}"
+  tags:
+    - android
+    - intellij
+    - terraform
+    - gradle
 
 #################################################################
 
@@ -23,12 +28,22 @@
     name: "{{ item }}"
     state: "latest"
   with_items: "{{ libraries_apt }}"
+  tags:
+    - android
+    - intellij
+    - terraform
+    - gradle
 
 - name: "pip | install"
   pip:
     name: "{{ item }}"
     state: "latest"
   with_items: "{{ libraries_pip }}"
+  tags:
+    - android
+    - intellij
+    - terraform
+    - gradle
 
 #################################################################
 
@@ -37,6 +52,8 @@
     url: "{{ gradle.url }}{{ gradle.zip }}"
     dest: "/tmp/{{ gradle.zip }}"
   creates: "{{ gradle.home }}/gradle/"
+  tags:
+    - gradle
 
 - name: "gradle | unpack"
   unarchive:
@@ -45,6 +62,8 @@
     owner: "{{ primary_user.id }}"
     group: "{{ primary_user.id }}"
     creates: "{{ gradle.home }}/gradle/"
+  tags:
+    - gradle
 
 #################################################################
 
@@ -53,6 +72,8 @@
     url: "{{ android.url }}{{ android.zip }}"
     dest: "/tmp/{{ android.zip }}"
   creates: "{{ android.home }}/android-studio/"
+  tags:
+    - android
 
 - name: "android | unpack"
   unarchive:
@@ -61,6 +82,8 @@
     owner: "{{ primary_user.id }}"
     group: "{{ primary_user.id }}"
     creates: "{{ android.home }}/android-studio/"
+  tags:
+    - android
 
 #################################################################
 
@@ -69,6 +92,8 @@
     url: "{{ intellij.url }}{{ intellij.zip }}"
     dest: "/tmp/{{ intellij.zip }}"
   creates: "{{ intellij.home }}/idea-IC-172.4343.14/"
+  tags:
+    - intellij
 
 - name: "intellij | unpack"
   unarchive:
@@ -77,6 +102,8 @@
     owner: "{{ primary_user.id }}"
     group: "{{ primary_user.id }}"
     creates: "{{ intellij.home }}/idea-IC-172.4343.14/"
+  tags:
+    - intellij
 
 #################################################################
 
@@ -85,6 +112,8 @@
     url: "{{ terraform.url }}{{ terraform.zip }}"
     dest: "/tmp/{{ terraform.zip }}"
   creates: "{{ terraform.home }}/terraform"
+  tags:
+    - terraform
 
 - name: "terraform | unpack"
   unarchive:
@@ -113,6 +142,8 @@
     state: latest
     update_cache: yes
   notify: "docker | service | start"
+  tags:
+    - docker
 
 #################################################################
 

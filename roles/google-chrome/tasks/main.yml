@@ -8,6 +8,9 @@
     state: "absent"
     autoremove: yes
   with_items: "{{ libraries_apt_remove }}"
+  tags:
+    - google
+    - chrome
 
 #################################################################
 
@@ -15,11 +18,17 @@
   get_url:
     url: "{{ chrome.url }}{{ chrome.file }}"
     dest: "/tmp/{{ chrome.file }}"
+  tags:
+    - google
+    - chrome
 
 - name: "apt | install"
   apt:
     deb: "/tmp/{{ chrome.file }}"
     state: present
+  tags:
+    - google
+    - chrome
 
 #################################################################
 

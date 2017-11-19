@@ -10,6 +10,8 @@
     group: "{{ item.id }}"
     mode: 0644
   with_items: "{{ all_users }}"
+  tags:
+    - bash
 
 - name: "copy | config | .bash_aliases"
   template:
@@ -19,6 +21,8 @@
     group: "{{ item.id }}"
     mode: 0644
   with_items: "{{ all_users }}"
+  tags:
+    - bash
 
 - name: "copy | config | .bash_functions"
   template:
@@ -28,6 +32,8 @@
     group: "{{ item.id }}"
     mode: 0644
   with_items: "{{ all_users }}"
+  tags:
+    - bash
 
 #################################################################
 
