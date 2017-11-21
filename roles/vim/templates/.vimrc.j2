@@ -37,9 +37,6 @@
         \ "Untracked" : "?"
         \ }
 
-" Finalise
-  filetype plugin indent on
-
 "-----------------------------------------------------
 " MAPPINGS
 "-----------------------------------------------------
@@ -51,6 +48,7 @@
 
   map <F2>        :NERDTreeToggle<CR>
   map <F3>        <C-W><C-W>
+  map <F4>        :%s/\t/  /g<CR>
   map <F5>        :w<CR>
   map <F9>        :edit!<CR>
   map <F10>       :set paste!<CR>
