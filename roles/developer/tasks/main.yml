@@ -51,7 +51,6 @@
   get_url:
     url: "{{ gradle.url }}{{ gradle.zip }}"
     dest: "/tmp/{{ gradle.zip }}"
-  creates: "{{ gradle.home }}/gradle/"
   tags:
     - gradle
 
@@ -71,7 +70,6 @@
   get_url:
     url: "{{ android.url }}{{ android.zip }}"
     dest: "/tmp/{{ android.zip }}"
-  creates: "{{ android.home }}/android-studio/"
   tags:
     - android
 
@@ -91,7 +89,6 @@
   get_url:
     url: "{{ intellij.url }}{{ intellij.zip }}"
     dest: "/tmp/{{ intellij.zip }}"
-  creates: "{{ intellij.home }}/idea-IC-172.4343.14/"
   tags:
     - intellij
 
@@ -111,7 +108,6 @@
   get_url:
     url: "{{ terraform.url }}{{ terraform.zip }}"
     dest: "/tmp/{{ terraform.zip }}"
-  creates: "{{ terraform.home }}/terraform"
   tags:
     - terraform
 
