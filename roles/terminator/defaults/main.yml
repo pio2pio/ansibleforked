@@ -3,6 +3,3 @@
 libraries_apt:
   - terminator
 
-libraries_apt_remove:
-  - removing_nothing
-

@@ -1,12 +1,5 @@
 ---
 
-libraries_apt_remove:
-  - libreoffice*
-  - gnome-sudoku
-  - gnome-mines
-  - gnome-mahjongg
-  - aisleriot         # Solitaire
-
 libraries_apt:
   - tree
   - vlc

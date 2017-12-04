@@ -2,18 +2,6 @@
 
 #################################################################
 
-- name: "apt | remove"
-  apt:
-    name: "{{ item }}"
-    state: "absent"
-    autoremove: yes
-  with_items: "{{ libraries_apt_remove }}"
-  tags:
-    - google
-    - chrome
-
-#################################################################
-
 - name: "wget | deb"
   get_url:
     url: "{{ chrome.url }}{{ chrome.file }}"

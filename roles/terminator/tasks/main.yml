@@ -12,16 +12,6 @@
 
 #################################################################
 
-- name: "apt | remove"
-  apt:
-    name: "{{ item }}"
-    state: "absent"
-  with_items: "{{ libraries_apt_remove }}"
-  tags:
-    - terminator
-
-#################################################################
-
 - name: "mkdir"
   file:
     path: "{{ primary_user.home }}/.config/terminator"
