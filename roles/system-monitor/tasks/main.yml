@@ -7,6 +7,8 @@
     repo: "{{ item }}"
     state: "present"
   with_items: "{{ repos_apt }}"
+  tags:
+    - system-monitor
 
 #################################################################
 
@@ -15,6 +17,8 @@
     name: "{{ item }}"
     state: "latest"
   with_items: "{{ libraries_apt }}"
+  tags:
+    - system-monitor
 
 #################################################################
 
@@ -25,6 +29,8 @@
     owner: "{{ primary_user.id }}"
     group: "{{ primary_user.id }}"
     mode: 0644
+  tags:
+    - system-monitor
 
 - name: "copy | config"
   template:
@@ -33,6 +39,8 @@
     owner: "{{ primary_user.id }}"
     group: "{{ primary_user.id }}"
     mode: 0644
+  tags:
+    - system-monitor
 
 - name: "copy | autostart"
   template:
@@ -41,6 +49,8 @@
     owner: "{{ primary_user.id }}"
     group: "{{ primary_user.id }}"
     mode: 0644
+  tags:
+    - system-monitor
 
 #################################################################
 

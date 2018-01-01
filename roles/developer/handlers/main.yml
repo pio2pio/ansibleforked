@@ -4,16 +4,16 @@
 
 - name: "docker | service | start"
   service:
-    name: "{{ docker.service }}"
-    enabled: yes
-    state: restarted
+    name    : "{{ docker.service }}"
+    enabled : "yes"
+    state   : "restarted"
   notify: "docker | chmod"
 
 - name: "docker | chmod"
   file:
-    name: "{{ docker.dir }}"
-    state: file
-    mode: 0666
+    name    : "{{ docker.dir }}"
+    state   : "file"
+    mode    : "0666"
 
 #################################################################
 

@@ -8,7 +8,6 @@
 
   vars:
     - gui: True
-      system_version: "ubuntu-zesty"
       root_user:
         id: 'root'
         home: '/root'
@@ -25,20 +24,20 @@
 
   pre_tasks:
     - debug:
-        msg: "Any prereq tasks go here"
+        msg: "{{ ansible_distribution | lower }}-{{ ansible_distribution_release | lower }}"
 
   roles:
-    - { role: prereq }
-    - { role: git }
-    - { role: bash }
-    - { role: vim }
+    - { role: prereq          }
+    - { role: git             }
+    - { role: bash            }
+    - { role: vim             }
     - { role: powerline-shell }
-    - { role: java }
-    - { role: general }
-    - { role: keychain }
-    - { role: wallpaper }
-    - { role: system-monitor }
-    - { role: google-chrome }
-    - { role: terminator }
-    - { role: developer }
+    - { role: java            }
+    - { role: general         }
+    - { role: keychain        }
+    - { role: wallpaper       }
+    - { role: system-monitor  }
+    - { role: google-chrome   }
+    - { role: terminator      }
+    - { role: developer,      intellij_version: "2017.3.2" }
 

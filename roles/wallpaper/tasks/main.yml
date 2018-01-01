@@ -13,6 +13,8 @@
     - '/{{ systemd_dir}}'
     - '/{{ service_dir }}'
     - '/{{ wallpapers_dir }}'
+  tags:
+    - wallpaper
 
 #################################################################
 
@@ -20,6 +22,8 @@
   copy:
     src: '.'
     dest: '/{{ wallpapers_dir }}/'
+  tags:
+    - wallpaper
 
 - name: "copy | wallpaper service"
   template:
@@ -29,6 +33,8 @@
     group: "{{ root_user.id }}"
     mode: 0755
   notify: "service | start"
+  tags:
+    - wallpaper
 
 - name: "copy | systemd service"
   template:
@@ -38,6 +44,8 @@
     group: "{{ root_user.id }}"
     mode: 0755
   notify: "service | start"
+  tags:
+    - wallpaper
 
 #################################################################
 
@@ -46,6 +54,8 @@
     name: '{{ service_name }}'
     enabled: yes
     state: started
+  tags:
+    - wallpaper
 
 #################################################################
 

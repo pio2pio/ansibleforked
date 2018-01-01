@@ -7,8 +7,10 @@ source ./scripts/setup.sh
 
 usage () {
   PRG=$(basename $0)
-  echo "$PRG -p PLAYBOOK [-v VERBOSITY] [-d] [-s] [-h]"
+  echo "$PRG -p PLAYBOOK [-t TAGS] [-v VERBOSITY] [-d] [-s] [-h]"
   echo "     -a PLAYBBOOK     path to playbook"
+  echo "     -t TAGS          run only tasks with provided tags"
+  echo "     -z SKIP          skips tasks with provided tags"
   echo "     -v VERBOSITY     v, vv, vvv, vvvv"
   echo "     -d               show diffs"
   echo "     -s               run as sudo"
@@ -24,10 +26,16 @@ get_playbook () {
 #######################################################################
 # Get Input
 
-while getopts ":p:v:dsh" arg; do
+while getopts ":p:t:z:v:dsh" arg; do
   case $arg in
     p)
       playbook=$(get_playbook "${OPTARG}")
+      ;;
+    t)
+      tags="--tags \"${OPTARG}\""
+      ;;
+    z)
+      skip="--skip-tags \"${OPTARG}\""
       ;;
     v)
       verbosity="-${OPTARG}"
@@ -74,7 +82,7 @@ fi
 
 #######################################################################
 
-exe="ansible-playbook ${playbook} ${verbosity} ${diff} ${sudo}"
+exe="ansible-playbook ${playbook} ${tags} ${skip} ${verbosity} ${diff} ${sudo}"
 echo "${exe}"
 eval "${exe}"
 
