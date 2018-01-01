@@ -3,6 +3,7 @@
 libraries_apt:
   - unzip
   - ruby
+  - android-tools-adb
 
 libraries_pip:
   - ansible
