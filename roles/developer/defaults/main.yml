@@ -9,30 +9,30 @@ libraries_pip:
   - awscli
 
 docker:
-  key_id: "58118E89F3A912897C070ADBF76221572C52609D"
-  key_server: "http://p80.pool.sks-keyservers.net:80"
-  repo: "deb https://apt.dockerproject.org/repo {{ ansible_distribution | lower }}-{{ ansible_distribution_release | lower }} main"
-  dir: "/var/run/docker.sock"
-  apt: "docker-engine"
-  service: "docker"
+  key_id     : "58118E89F3A912897C070ADBF76221572C52609D"
+  key_server : "http://p80.pool.sks-keyservers.net:80"
+  repo       : "deb https://apt.dockerproject.org/repo {{ ansible_distribution | lower }}-{{ ansible_distribution_release | lower }} main"
+  dir        : "/var/run/docker.sock"
+  apt        : "docker-engine"
+  service    : "docker"
 
 android:
-  url: "https://dl.google.com/dl/android/studio/ide-zips/2.3.3.0/"
-  zip: "android-studio-ide-162.4069837-linux.zip"
-  home: "/usr/lib/android-studio"
+  url     : "https://dl.google.com/dl/android/studio/ide-zips/2.3.3.0/"
+  zip     : "android-studio-ide-162.4069837-linux.zip"
+  home    : "/usr/lib/android-studio"
 
 intellij:
-  url: "https://download-cf.jetbrains.com/idea/"
-  zip: "ideaIC-2017.2.5-no-jdk.tar.gz"
-  home: "/usr/lib/intellij"
+  url     : "https://download-cf.jetbrains.com/idea/"
+  zip     : "ideaIC-{{ intellij_version }}.tar.gz"
+  home    : "/usr/lib/intellij"
 
 terraform:
-  url: "https://releases.hashicorp.com/terraform/0.10.7/"
-  zip: "terraform_0.10.7_linux_amd64.zip"
-  home: "/usr/lib/terraform"
+  url     : "https://releases.hashicorp.com/terraform/0.10.7/"
+  zip     : "terraform_0.10.7_linux_amd64.zip"
+  home    : "/usr/lib/terraform"
 
 gradle:
-  url: "https://services.gradle.org/distributions/"
-  zip: "gradle-4.1-bin.zip"
-  home: "/usr/lib/gradle"
+  url     : "https://services.gradle.org/distributions/"
+  zip     : "gradle-4.1-bin.zip"
+  home    : "/usr/lib/gradle"
 
