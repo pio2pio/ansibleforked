@@ -7,6 +7,7 @@
     repo  : "{{ item }}"
     state : "present"
   with_items: "{{ repos_apt }}"
+  notify: "application | start"
   tags:
     - system-monitor
 
@@ -17,6 +18,7 @@
     name  : "{{ item }}"
     state : "latest"
   with_items: "{{ libraries_apt }}"
+  notify: "application | start"
   tags:
     - system-monitor
 
@@ -28,17 +30,19 @@
     state : "directory"
     owner : "{{ primary_user.id }}"
     group : "{{ primary_user.id }}"
-    mode  : "755"
+    mode  : "0755"
+  notify: "application | start"
   tags:
     - system-monitor
 
 - name: "copy | config"
   template:
-    src   : ".indicator-sysmonitor.json.j2"
+    src   : "indicator-sysmonitor.json.j2"
     dest  : "{{ primary_user.home }}/.indicator-sysmonitor.json"
     owner : "{{ primary_user.id }}"
     group : "{{ primary_user.id }}"
     mode  : "0644"
+  notify: "application | start"
   tags:
     - system-monitor
 
@@ -49,6 +53,7 @@
     owner : "{{ primary_user.id }}"
     group : "{{ primary_user.id }}"
     mode  : "0644"
+  notify: "application | start"
   tags:
     - system-monitor
 
