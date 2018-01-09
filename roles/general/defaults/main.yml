@@ -5,6 +5,7 @@ libraries_apt:
   - wget
   - tree
   - vlc
+  - jq
   - xclip
   - baobab            # Disk Usage
 
