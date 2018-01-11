@@ -4,6 +4,7 @@ libraries_apt:
   - curl
   - wget
   - tree
+  - git
   - vlc
   - jq
   - xclip
