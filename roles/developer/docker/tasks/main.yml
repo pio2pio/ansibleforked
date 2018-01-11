@@ -1,0 +1,33 @@
+---
+
+#################################################################
+
+- name: "apt | key"
+  apt_key:
+    id        : "{{ docker.key_id }}"
+    keyserver : "{{ docker.key_server }}"
+    state     : present
+  tags:
+    - developer
+    - docker
+
+- name: "apt | repo"
+  apt_repository:
+    repo      : "{{ docker.repo }}"
+    state     : present
+  tags:
+    - developer
+    - docker
+
+- name: "apt | install"
+  apt:
+    name      : "{{ docker.apt }}"
+    state     : latest
+    update_cache: yes
+  notify: "service | start"
+  tags:
+    - developer
+    - docker
+
+#################################################################
+

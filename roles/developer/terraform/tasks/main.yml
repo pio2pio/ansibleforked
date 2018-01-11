@@ -1,0 +1,53 @@
+---
+
+#################################################################
+
+- name: "mkdirs"
+  file:
+    name    : "{{ item }}"
+    state   : "directory"
+    recurse : "yes"
+    owner   : "{{ primary_user.id }}"
+    group   : "{{ primary_user.id }}"
+    mode    : "0755"
+  with_items:
+    - "{{ terraform.home }}"
+  tags:
+    - developer
+    - terraform
+
+#################################################################
+
+- name: "apt | install"
+  apt:
+    name    : "{{ item }}"
+    state   : "latest"
+  with_items: "{{ libraries_apt }}"
+  tags:
+    - developer
+    - terraform
+
+#################################################################
+
+- name: "wget"
+  get_url:
+    url     : "{{ terraform.url }}{{ terraform.zip }}"
+    dest    : "/tmp/{{ terraform.zip }}"
+  creates: "{{ terraform.home }}/terraform"
+  tags:
+    - developer
+    - terraform
+
+- name: "unpack"
+  unarchive:
+    src     : "/tmp/{{ terraform.zip }}"
+    dest    : "{{ terraform.home }}"
+    owner   : "{{ primary_user.id }}"
+    group   : "{{ primary_user.id }}"
+    creates : "{{ terraform.home }}/terraform"
+  tags:
+    - developer
+    - terraform
+
+#################################################################
+

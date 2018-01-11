@@ -1,23 +1,26 @@
 ---
 
-- hosts: localhost
-  become: yes
-  become_method: sudo
-  connection: local
-  gather_facts: yes
+- hosts         : localhost
+  become        : yes
+  become_method : sudo
+  connection    : local
+  gather_facts  : yes
 
   vars:
-    - gui: True
+    - gui       : True
+
       root_user:
-        id: 'root'
-        home: '/root'
-        name: 'root'
-        email: 'root@root.com'
+        id      : 'root'
+        home    : '/root'
+        name    : 'root'
+        email   : 'root@root.com'
+
       primary_user:
-        id: 'steve'
-        home: '/home/steve'
-        name: 'Steve Stevens'
-        email: 'steve.h.i.stevens@gmail.com'
+        id      : 'steve'
+        home    : '/home/steve'
+        name    : 'Steve Stevens'
+        email   : 'steve.h.i.stevens@gmail.com'
+
       all_users:
         - '{{ root_user }}'
         - '{{ primary_user }}'
@@ -29,17 +32,22 @@
         msg: "VM Status   : {{ ansible_virtualization_role }} [{{ ansible_virtualization_type }}]"
 
   roles:
-    - { role: prereq          }
-    - { role: git             }
-    - { role: bash            }
-    - { role: vim             }
-    - { role: powerline-shell }
-    - { role: java            }
-    - { role: general         }
-    - { role: keychain        }
-    - { role: wallpaper       }
-    - { role: system-monitor  }
-    - { role: google-chrome   }
-    - { role: terminator      }
-    - { role: developer,      intellij_version: "2017.3.2" }
+    - { role: prereq                                              }
+    - { role: git                                                 }
+    - { role: bash                                                }
+    - { role: vim                                                 }
+    - { role: powerline-shell                                     }
+    - { role: java                                                }
+    - { role: general                                             }
+    - { role: keychain                                            }
+    - { role: wallpaper                                           }
+    - { role: system-monitor                                      }
+    - { role: google-chrome                                       }
+    - { role: terminator                                          }
+    - { role: developer/general                                   }
+    - { role: developer/intellij,   intellij_version: "2017.3.2"  }
+    - { role: developer/android                                   }
+    - { role: developer/gradle                                    }
+    - { role: developer/terraform                                 }
+    - { role: developer/docker                                    }
 

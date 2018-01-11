@@ -1,0 +1,10 @@
+---
+
+libraries_apt:
+  - unzip
+
+intellij:
+  url     : "https://download-cf.jetbrains.com/idea/"
+  zip     : "ideaIC-{{ intellij_version }}.tar.gz"
+  home    : "/usr/lib/intellij"
+

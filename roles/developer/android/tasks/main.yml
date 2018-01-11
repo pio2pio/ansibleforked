@@ -1,0 +1,53 @@
+---
+
+#################################################################
+
+- name: "mkdirs"
+  file:
+    name    : "{{ item }}"
+    state   : "directory"
+    recurse : "yes"
+    owner   : "{{ primary_user.id }}"
+    group   : "{{ primary_user.id }}"
+    mode    : "0755"
+  with_items:
+    - "{{ android.home }}"
+  tags:
+    - developer
+    - android
+
+#################################################################
+
+- name: "apt | install"
+  apt:
+    name    : "{{ item }}"
+    state   : "latest"
+  with_items: "{{ libraries_apt }}"
+  tags:
+    - developer
+    - android
+
+#################################################################
+
+- name: "wget"
+  get_url:
+    url     : "{{ android.url }}{{ android.zip }}"
+    dest    : "/tmp/{{ android.zip }}"
+  creates: "{{ android.home }}/android-studio/"
+  tags:
+    - developer
+    - android
+
+- name: "unpack"
+  unarchive:
+    src     : "/tmp/{{ android.zip }}"
+    dest    : "{{ android.home }}"
+    owner   : "{{ primary_user.id }}"
+    group   : "{{ primary_user.id }}"
+    creates : "{{ android.home }}/android-studio/"
+  tags:
+    - developer
+    - android
+
+#################################################################
+

@@ -1,0 +1,11 @@
+---
+
+libraries_apt:
+  - unzip
+  - android-tools-adb
+
+android:
+  url     : "https://dl.google.com/dl/android/studio/ide-zips/2.3.3.0/"
+  zip     : "android-studio-ide-162.4069837-linux.zip"
+  home    : "/usr/lib/android-studio"
+
