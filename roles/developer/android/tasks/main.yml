@@ -33,7 +33,6 @@
   get_url:
     url     : "{{ android.url }}{{ android.zip }}"
     dest    : "/tmp/{{ android.zip }}"
-  creates: "{{ android.home }}/android-studio/"
   tags:
     - developer
     - android

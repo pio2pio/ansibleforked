@@ -33,7 +33,6 @@
   get_url:
     url     : "{{ gradle.url }}{{ gradle.zip }}"
     dest    : "/tmp/{{ gradle.zip }}"
-  creates: "{{ gradle.home }}/gradle/"
   tags:
     - developer
     - gradle

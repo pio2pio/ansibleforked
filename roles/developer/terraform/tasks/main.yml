@@ -33,7 +33,6 @@
   get_url:
     url     : "{{ terraform.url }}{{ terraform.zip }}"
     dest    : "/tmp/{{ terraform.zip }}"
-  creates: "{{ terraform.home }}/terraform"
   tags:
     - developer
     - terraform

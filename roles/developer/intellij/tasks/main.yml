@@ -33,7 +33,6 @@
   get_url:
     url     : "{{ intellij.url }}{{ intellij.zip }}"
     dest    : "/tmp/{{ intellij.zip }}"
-  creates: "{{ intellij.home }}/idea-IC-172.4343.14/"
   tags:
     - developer
     - intellij
