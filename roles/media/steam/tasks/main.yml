@@ -1,0 +1,44 @@
+---
+
+#################################################################
+
+- name: "licence | accept purge"
+  command: 'echo "steam steam/purge note" | sudo debconf-set-selections'
+  tags:
+    - media
+    - steam
+
+- name: "licence | accept licence"
+  command: 'echo "steam steam/license note" | sudo debconf-set-selections'
+  tags:
+    - media
+    - steam
+
+- name: "licence | accept question"
+  command: 'echo "steam steam/question select I AGREE" | sudo debconf-set-selections '
+  tags:
+    - media
+    - steam
+
+#################################################################
+
+- name: "apt | install | prereq"
+  apt:
+    name    : "{{ item }}"
+    state   : "latest"
+  with_items: "{{ libraries_apt }}"
+  tags:
+    - media
+    - steam
+
+#################################################################
+
+- name: "apt | install"
+  apt:
+    deb     : "{{ steam.deb }}"
+  tags:
+    - media
+    - steam
+
+#################################################################
+

@@ -1,0 +1,7 @@
+---
+
+libraries_apt:
+
+steam:
+  deb     : "https://steamcdn-a.akamaihd.net/client/installer/steam.deb"
+
