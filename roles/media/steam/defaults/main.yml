@@ -11,3 +11,7 @@ libraries_apt:
 steam:
   deb     : "https://steamcdn-a.akamaihd.net/client/installer/steam.deb"
 
+binme:  # without destroying these steam wont start up [after installation]
+  - "~/.local/share/Steam/ubuntu12_32/steam-runtime/i386/usr/lib/i386-linux-gnu/libstdc++.so.6"
+  - "~/.local/share/Steam/ubuntu12_32/steam-runtime/i386/lib/i386-linux-gnu/libgcc_s.so.1"
+
