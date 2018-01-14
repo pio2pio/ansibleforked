@@ -34,3 +34,11 @@
 
 #################################################################
 
+- name    : "cmd | add to launcher"
+  script  : "{{ unity_launcher.script }}"
+  become  : "{{ primary_user.id }}"
+  tags:
+    - terminator
+
+#################################################################
+

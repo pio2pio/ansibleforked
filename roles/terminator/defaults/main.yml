@@ -3,3 +3,6 @@
 libraries_apt:
   - terminator
 
+unity_launcher:
+  script  : "../scripts/add_launcher.sh terminator"
+
