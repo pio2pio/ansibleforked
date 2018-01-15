@@ -1,6 +1,6 @@
 ## Pre-Req
 #### Ubuntu
-- none
+- Install Guest Additions
 
 #### RetroPie
 - Connect Wifi
