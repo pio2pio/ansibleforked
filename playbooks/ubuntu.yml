@@ -32,23 +32,26 @@
         msg: "VM Status   : {{ ansible_virtualization_role }} [{{ ansible_virtualization_type }}]"
 
   roles:
-    - { role: prereq                                              }
-    - { role: git                                                 }
-    - { role: bash                                                }
-    - { role: vim                                                 }
-    - { role: powerline-shell                                     }
-    - { role: java                                                }
-    - { role: general                                             }
-    - { role: keychain                                            }
-    - { role: wallpaper                                           }
-    - { role: system-monitor                                      }
-    - { role: google-chrome                                       }
-    - { role: terminator                                          }
-    - { role: developer/general                                   }
-    - { role: developer/intellij,   intellij_version: "2017.3.2"  }
-    - { role: developer/android                                   }
-    - { role: developer/gradle                                    }
-    - { role: developer/terraform                                 }
-    - { role: developer/docker                                    }
-    - { role: media/steam                                         }
+    - { role: prereq                        }
+    - { role: git                           }
+    - { role: bash                          }
+    - { role: vim                           }
+    - { role: powerline-shell               }
+    - { role: java                          }
+    - { role: general                       }
+    - { role: keychain                      }
+    - { role: wallpaper                     }
+    - { role: system-monitor                }
+    - { role: google-chrome                 }
+    - { role: terminator                    }
+    - { role: developer/general             }
+    - { role: developer/intellij,
+          intellij_version  : "2017.3.2"    }
+    - { role: developer/android,
+          android_version   : "3.0.1.0",
+          android_build     : "171.4443003" }
+    - { role: developer/gradle              }
+    - { role: developer/terraform           }
+    - { role: developer/docker              }
+    - { role: media/steam                   }
 

@@ -11,7 +11,7 @@
     group   : "{{ primary_user.id }}"
     mode    : "0755"
   with_items:
-    - "{{ android.home }}"
+    - "{{ android.home }}/{{ android_version }}"
   tags:
     - developer
     - android
@@ -29,21 +29,33 @@
 
 #################################################################
 
-- name: "wget"
-  get_url:
-    url     : "{{ android.url }}{{ android.zip }}"
-    dest    : "/tmp/{{ android.zip }}"
+- name: "unpack"
+  unarchive:
+    src         : "{{ android.url }}{{ android.zip }}"
+    dest        : "{{ android.home }}/{{ android_version }}"
+    remote_src  : "yes"
+    creates     : "{{ android.home }}/{{ android_version }}/android-studio/bin/"
+  become : "{{ primary_user.id }}"
   tags:
     - developer
     - android
 
-- name: "unpack"
-  unarchive:
-    src     : "/tmp/{{ android.zip }}"
-    dest    : "{{ android.home }}"
-    owner   : "{{ primary_user.id }}"
-    group   : "{{ primary_user.id }}"
-    creates : "{{ android.home }}/android-studio/"
+#################################################################
+
+- name: "copy | config"
+  template:
+    src         : "jetbrains-android-studio.desktop.j2"
+    dest        : "/usr/share/applications/jetbrains-android-studio.desktop"
+    owner       : "{{ primary_user.id }}"
+    group       : "{{ primary_user.id }}"
+    mode        : "0644"
+  tags:
+    - developer
+    - android
+
+- name    : "cmd | add to launcher"
+  script  : "{{ unity_launcher.script }}"
+  become  : "{{ primary_user.id }}"
   tags:
     - developer
     - android
