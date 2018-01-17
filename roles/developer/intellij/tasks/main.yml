@@ -11,7 +11,7 @@
     group   : "{{ primary_user.id }}"
     mode    : "0755"
   with_items:
-    - "{{ intellij.home }}"
+    - "{{ intellij.home }}/{{ intellij_version }}"
   tags:
     - developer
     - intellij
@@ -29,21 +29,36 @@
 
 #################################################################
 
-- name: "wget"
-  get_url:
-    url     : "{{ intellij.url }}{{ intellij.zip }}"
-    dest    : "/tmp/{{ intellij.zip }}"
+- name: "unpack"
+  unarchive:
+    src         : "{{ intellij.url }}{{ intellij.zip }}"
+    dest        : "{{ intellij.home }}/{{ intellij_version }}"
+#    owner       : "{{ primary_user.id }}"
+#    group       : "{{ primary_user.id }}"
+    remote_src  : "yes"
+    extra_opts  : [--strip-components=1]
+    creates     : "{{ intellij.home }}/{{ intellij_version }}/bin/"
+  become  : "{{ primary_user.id }}"
   tags:
     - developer
     - intellij
 
-- name: "unpack"
-  unarchive:
-    src     : "/tmp/{{ intellij.zip }}"
-    dest    : "{{ intellij.home }}"
-    owner   : "{{ primary_user.id }}"
-    group   : "{{ primary_user.id }}"
-    creates : "{{ intellij.home }}/idea-IC-172.4343.14/"
+#################################################################
+
+- name: "copy | config"
+  template:
+    src         : "jetbrains-idea-ce.desktop.j2"
+    dest        : "/usr/share/applications/jetbrains-idea-ce.desktop"
+    owner       : "{{ primary_user.id }}"
+    group       : "{{ primary_user.id }}"
+    mode        : "0644"
+  tags:
+    - developer
+    - intellij
+
+- name    : "cmd | add to launcher"
+  script  : "{{ unity_launcher.script }}"
+  become  : "{{ primary_user.id }}"
   tags:
     - developer
     - intellij

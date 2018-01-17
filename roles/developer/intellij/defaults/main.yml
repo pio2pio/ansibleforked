@@ -8,3 +8,6 @@ intellij:
   zip     : "ideaIC-{{ intellij_version }}.tar.gz"
   home    : "/usr/lib/intellij"
 
+unity_launcher:
+  script  : "../../scripts/add_launcher.sh jetbrains-idea-ce"
+
