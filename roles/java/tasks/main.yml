@@ -4,11 +4,19 @@
 
 - name: "mkdir structure"
   file:
-    path: "{{ java_dir }}"
+    path: "{{ java.home }}"
     state: directory
     owner: "{{ primary_user.id }}"
     group: "{{ primary_user.id }}"
     mode: 0755
+  tags:
+    - java
+
+#################################################################
+
+- name: "apt | repositories"
+  apt_repository:
+    repo: "{{ java.ppa }}"
   tags:
     - java
 
@@ -24,32 +32,10 @@
 
 #################################################################
 
-- name: "wget | java versions"
-  get_url:
-    url: "{{ item.url }}"
-    dest: "/tmp/{{ item.zip }}"
-    headers: "Cookie:oraclelicense=accept-securebackup-cookie"
-  with_items: "{{ java }}"
-  tags:
-    - java
-
-- name: "unpack | java versions"
-  unarchive:
-    src: "/tmp/{{ item.zip }}"
-    dest: "{{ java_dir }}"
-    owner: "{{ primary_user.id }}"
-    group: "{{ primary_user.id }}"
-    creates: "{{ java_dir }}/{{ item.name }}"
-  with_items: "{{ java }}"
-  tags:
-    - java
-
-#################################################################
-
 - name: "symlink | set version"
   file:
-    src: "{{ java_dir }}/{{ java_default }}"
-    dest: "{{ java_dir }}/java"
+    src: "{{ java.home }}/{{ java.default }}"
+    dest: "{{ java.home }}/java"
     owner: "{{ primary_user.id }}"
     group: "{{ primary_user.id }}"
     state: link
