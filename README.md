@@ -13,7 +13,7 @@ ___
 ```
 sudo apt-get install -y python-pip git \
 && sudo pip install ansible \
-&& git clone https://github.com/OurFriendIrony/ubuntu-setup.git /tmp/ansible \
+&& git clone https://github.com/OurFriendIrony/ansible.git /tmp/ansible \
 && cd /tmp/ansible
 ```
 

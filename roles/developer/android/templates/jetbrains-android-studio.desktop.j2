@@ -3,7 +3,7 @@ Encoding=UTF-8
 Version=1.0
 Type=Application
 Name=Android Studio
-Icon=jetbrains-studio.png
+Icon={{ android.home }}/{{ android_version }}/android-studio/bin/studio.png
 Exec={{ android.home }}/{{ android_version }}/android-studio/bin/../jre/bin/java -Xbootclasspath/a:{{ android.home }}/{{ android_version }}/android-studio/bin/../lib/boot.jar -classpath {{ android.home }}/{{ android_version }}/android-studio/bin/../lib/bootstrap.jar:{{ android.home }}/{{ android_version }}/android-studio/bin/../lib/extensions.jar:{{ android.home }}/{{ android_version }}/android-studio/bin/../lib/util.jar:{{ android.home }}/{{ android_version }}/android-studio/bin/../lib/jdom.jar:{{ android.home }}/{{ android_version }}/android-studio/bin/../lib/log4j.jar:{{ android.home }}/{{ android_version }}/android-studio/bin/../lib/trove4j.jar:{{ android.home }}/{{ android_version }}/android-studio/bin/../lib/jna.jar:{{ android.home }}/{{ android_version }}/android-studio/bin/../jre/lib/tools.jar -Xms256m -Xmx1280m -XX:ReservedCodeCacheSize=240m -XX:+UseConcMarkSweepGC -XX:SoftRefLRUPolicyMSPerMB=50 -da -Djna.nosys=true -Djna.boot.library.path= -Djna.debug_load=true -Djna.debug_load.jna=true -Dsun.io.useCanonCaches=false -Djava.net.preferIPv4Stack=true -Dawt.useSystemAAFontSettings=lcd -Djb.vmOptionsFile={{ android.home }}/{{ android_version }}/android-studio/bin/studio64.vmoptions -XX:ErrorFile=/home/{{ primary_user.id }}/java_error_in_STUDIO_%p.log -XX:HeapDumpPath=/home/{{ primary_user.id }}/java_error_in_STUDIO.hprof -Djb.restart.code=88 -Didea.paths.selector=AndroidStudio2.3 -Didea.platform.prefix=AndroidStudio -Didea.jre.check=true com.intellij.idea.Main
 StartupNotify=false
 StartupWMClass=jetbrains-studio
