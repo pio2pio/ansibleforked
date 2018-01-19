@@ -2,10 +2,24 @@
 
 #################################################################
 
+- name: "mkdirs"
+  file:
+    name    : "{{ item }}"
+    state   : "directory"
+    owner   : "{{ primary_user.id }}"
+    group   : "{{ primary_user.id }}"
+    mode    : "0755"
+  with_items:
+    - "{{ git.home }}"
+  tags:
+    - git
+
+#################################################################
+
 - name: "apt | install"
   apt:
-    name: "{{ item }}"
-    state: "latest"
+    name    : "{{ item }}"
+    state   : "latest"
   with_items: "{{ libraries_apt }}"
   tags:
     - git
@@ -14,12 +28,24 @@
 
 - name: "copy | config"
   template:
-    src: ".gitconfig.j2"
-    dest: "{{ item.home }}/.gitconfig"
-    owner: "{{ item.id }}"
-    group: "{{ item.id }}"
-    mode: 0644
+    src     : ".gitconfig.j2"
+    dest    : "{{ item.home }}/.gitconfig"
+    owner   : "{{ item.id }}"
+    group   : "{{ item.id }}"
+    mode    : "0644"
   with_items: "{{ all_users }}"
+  tags:
+    - git
+
+#################################################################
+
+- name: "git | clone"
+  git:
+    repo    : "{{ git.url }}:{{ git.user }}/{{ item }}.git"
+    dest    : "{{ git.home }}/{{ item }}"
+    update  : "no"
+  with_items: "{{ git.repos }}"
+  become    : "{{ primary_user.id }}"
   tags:
     - git
 

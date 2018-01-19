@@ -3,3 +3,20 @@
 libraries_apt:
   - git
 
+git:
+  home  : "{{ primary_user.home }}/git"
+  url   : "git@github.com"
+  user  : "OurFriendIrony"
+  repos :
+    - "ansible"
+    - "AntFarm"
+    - "GameOfLife"
+    - "InstructionMessageQueue"
+    - "IsItOverYet"
+    - "MediaNotifier"
+    - "RetroPie-Python"
+    - "StestList"
+    - "work-scripts"
+    - "wso2-basic"
+    - "wso2-project-builder"
+
