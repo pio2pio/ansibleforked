@@ -39,15 +39,3 @@
 
 #################################################################
 
-- name: "git | clone"
-  git:
-    repo    : "{{ git.url }}:{{ git.user }}/{{ item }}.git"
-    dest    : "{{ git.home }}/{{ item }}"
-    update  : "no"
-  with_items: "{{ git.repos }}"
-  become    : "{{ primary_user.id }}"
-  tags:
-    - git
-
-#################################################################
-
