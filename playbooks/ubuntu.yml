@@ -44,6 +44,7 @@
     - { role: system-monitor                  }
     - { role: google-chrome                   }
     - { role: terminator                      }
+
     - { role: developer/general               }
     - { role: developer/intellij              ,
           intellij_year       : "2017.3"      ,
@@ -54,5 +55,8 @@
     - { role: developer/gradle                }
     - { role: developer/terraform             }
     - { role: developer/docker                }
+
     - { role: media/steam                     }
+
+    - { role: work/forticlient                }
 

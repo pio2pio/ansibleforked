@@ -19,6 +19,6 @@ docker:
 docker_images:
   - name      : "mysql"
     version   : "5.6"
-  - name      : "jenkins"
+  - name      : "jenkins/jenkins"
     version   : "2.96"
 
