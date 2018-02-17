@@ -1,3 +1,6 @@
+# vim
 **/*.swp
 *.retry
-**/facts/*
+
+# build
+ansible-sys/facts/**/*
