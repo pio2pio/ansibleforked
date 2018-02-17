@@ -1,0 +1,8 @@
+---
+libraries_apt:
+  - ruby
+
+libraries_pip:
+  - ansible
+  - awscli
+

@@ -7,14 +7,8 @@
     name: "{{ item }}"
     state: "latest"
   with_items: "{{ libraries_apt }}"
-
-#################################################################
-
-- name: "apt | remove"
-  apt:
-    name: "{{ item }}"
-    state: "absent"
-  with_items: "{{ libraries_apt_remove }}"
+  tags:
+    - terminator
 
 #################################################################
 
@@ -25,6 +19,8 @@
     owner: "{{ primary_user.id }}"
     group: "{{ primary_user.id }}"
     mode: 0755
+  tags:
+    - terminator
 
 - name: "copy | config"
   template:
@@ -33,6 +29,16 @@
     owner: "{{ primary_user.id }}"
     group: "{{ primary_user.id }}"
     mode: 0644
+  tags:
+    - terminator
+
+#################################################################
+
+- name    : "cmd | add to launcher"
+  script  : "{{ unity_launcher.script }}"
+  become  : "{{ primary_user.id }}"
+  tags:
+    - terminator
 
 #################################################################
 

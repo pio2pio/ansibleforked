@@ -1,0 +1,10 @@
+---
+
+libraries_apt:
+  - unzip
+
+terraform:
+  url     : "https://releases.hashicorp.com/terraform/0.10.7/"
+  zip     : "terraform_0.10.7_linux_amd64.zip"
+  home    : "/usr/lib/terraform"
+

@@ -1,0 +1,77 @@
+---
+
+#################################################################
+
+- name: "apt | install | prereq"
+  apt:
+    name    : "{{ item }}"
+    state   : "latest"
+  with_items: "{{ libraries_apt }}"
+  tags:
+    - developer
+    - docker
+
+#################################################################
+
+- name: "pip | install | prereq"
+  pip:
+    name    : "{{ item }}"
+    state   : "latest"
+  with_items: "{{ libraries_pip }}"
+  tags:
+    - developer
+    - docker
+
+#################################################################
+
+- name: "apt | key"
+  apt_key:
+    url           : "{{ docker.key_server }}"
+    id            : "{{ docker.key_id }}"
+    state         : "present"
+  tags:
+    - developer
+    - docker
+
+- name: "apt | repo"
+  apt_repository:
+    repo          : "{{ docker.repo }}"
+    state         : "present"
+  tags:
+    - developer
+    - docker
+
+- name: "apt | install"
+  apt:
+    name          : "{{ item }}"
+    state         : "latest"
+    update_cache  : "yes"
+  with_items: "{{ docker.apts }}"
+  tags:
+    - developer
+    - docker
+
+#################################################################
+
+- name: "group"
+  user:
+    name          : "{{ primary_user.id }}"
+    groups        : "docker"
+    append        : "yes"
+  tags:
+    - developer
+    - docker
+
+#################################################################
+
+- name: "images | install"
+  docker_image:
+    name          : "{{ item.name }}"
+    tag           : "{{ item.version }}"
+  with_items: "{{ docker_images }}"
+  tags:
+    - developer
+    - docker
+
+#################################################################
+

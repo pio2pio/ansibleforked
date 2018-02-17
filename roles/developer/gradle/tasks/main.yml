@@ -1,0 +1,52 @@
+---
+
+#################################################################
+
+- name: "mkdirs"
+  file:
+    name    : "{{ item }}"
+    state   : "directory"
+    recurse : "yes"
+    owner   : "{{ primary_user.id }}"
+    group   : "{{ primary_user.id }}"
+    mode    : "0755"
+  with_items:
+    - "{{ gradle.home }}"
+  tags:
+    - developer
+    - gradle
+
+#################################################################
+
+- name: "apt | install"
+  apt:
+    name    : "{{ item }}"
+    state   : "latest"
+  with_items: "{{ libraries_apt }}"
+  tags:
+    - developer
+    - gradle
+
+#################################################################
+
+- name: "wget"
+  get_url:
+    url     : "{{ gradle.url }}{{ gradle.zip }}"
+    dest    : "/tmp/{{ gradle.zip }}"
+  tags:
+    - developer
+    - gradle
+
+- name: "unpack"
+  unarchive:
+    src     : "/tmp/{{ gradle.zip }}"
+    dest    : "{{ gradle.home }}"
+    owner   : "{{ primary_user.id }}"
+    group   : "{{ primary_user.id }}"
+    creates : "{{ gradle.home }}/gradle/"
+  tags:
+    - developer
+    - gradle
+
+#################################################################
+

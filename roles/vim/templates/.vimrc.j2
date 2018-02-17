@@ -20,6 +20,8 @@
   Plugin 'tpope/vim-fugitive'
   Plugin 'markcornick/vim-terraform'
   Plugin 'pearofducks/ansible-vim'
+  Plugin 'ekalinin/dockerfile.vim'
+  Plugin 'tdnico/vim-gradle'
 
 " Plugin config
   " Airline
@@ -37,24 +39,26 @@
         \ "Untracked" : "?"
         \ }
 
-" Finalise
-  filetype plugin indent on
-
 "-----------------------------------------------------
 " MAPPINGS
 "-----------------------------------------------------
 
-  map <C-Right>   :next<CR>
-  map <C-Left>    :prev<CR>
-  map <S-Right>   :wnext<CR>
-  map <S-Left>    :wprev<CR>
+  map <C-Right>   :next<CR>|            " Move to next file
+  map <C-Left>    :prev<CR>|            " Move to prev file
+  map <S-Right>   :wnext<CR>|           " Save - Move to prev file
+  map <S-Left>    :wprev<CR>|           " Save - Move to next file
 
-  map <F2>        :NERDTreeToggle<CR>
-  map <F3>        <C-W><C-W>
-  map <F5>        :w<CR>
-  map <F9>        :edit!<CR>
-  map <F10>       :set paste!<CR>
-  map <F12>       :set number!<CR>
+  map <F2>        :NERDTreeToggle<CR>|  " Show nerdtree
+  map <F3>        <C-W><C-W>|           " Change window
+
+  map <F4>        :%s/\t/  /g<CR>|      " Convert tabs to spaces
+  map <F5>        :w<CR>|               " Save file
+  map <F6>        <S-I>//<ESC>|         " Block comment with '//'
+  map <F7>        <S-I>#<ESC>|          " Block comment with '#'
+  map <F9>        :edit!<CR>|           " Re-load file
+
+  map <F10>       :set paste!<CR>|      " Paste Mode    [on/off]
+  map <F12>       :set number!<CR>|     " Line Numbers  [on/off]
 
 "-----------------------------------------------------
 " GENERAL

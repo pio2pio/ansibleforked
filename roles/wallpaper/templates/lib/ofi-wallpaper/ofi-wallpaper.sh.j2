@@ -17,11 +17,13 @@ change_background() {
   echo "PID=${PID} | DBUS_SESSION_BUS_ADDRESS=${DBUS_SESSION_BUS_ADDRESS}"
   echo "Current Background :: $(gsettings get org.gnome.desktop.background picture-uri)"
   echo "New Background     :: ${PICTURE}"
-  su - {{ primary_user.id }} -c "DISPLAY=:0 GSETTINGS_BACKEND=dconf gsettings set org.gnome.desktop.background picture-uri file:///${PICTURE}"
+  gsettings set org.gnome.desktop.background picture-uri file:///${PICTURE}
   echo "Changed Background :: $(gsettings get org.gnome.desktop.background picture-uri)"
 }
 
-WALLPAPER_DIR="/{{ wallpapers_dir }}/space_abstract/"
+#WALLPAPER_DIR="/{{ wallpapers_dir }}/space_abstract/"
+#WALLPAPER_DIR="/{{ wallpapers_dir }}/space_solarsystem/"
+WALLPAPER_DIR="/{{ wallpapers_dir }}/video_games/"
 SLEEP=1m
 
 ###############################################################

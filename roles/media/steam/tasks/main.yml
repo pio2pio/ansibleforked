@@ -1,0 +1,62 @@
+---
+
+#################################################################
+
+- name: "apt | repo | prereq"
+  apt_repository:
+    repo          : "{{ item }}"
+    state         : "present"
+    update_cache  : "yes"
+  with_items: "{{ repositories_apt }}"
+  tags:
+    - media
+    - steam
+
+- name: "apt | upgrade"
+  apt:
+    update_cache  : "yes"
+    upgrade       : "yes"
+  tags:
+    - media
+    - steam
+
+- name: "apt | install | prereq"
+  apt:
+    name          : "{{ item }}"
+    state         : "latest"
+  with_items: "{{ libraries_apt }}"
+  tags:
+    - media
+    - steam
+
+#################################################################
+
+- name: "apt | install"
+  apt:
+    deb           : "{{ steam.deb }}"
+  tags:
+    - media
+    - steam
+
+#################################################################
+
+- name: "file | destroy files"
+  file:
+    path          : "{{ item }}"
+    state         : "absent"
+  with_items: "{{ binme }}"
+  tags:
+    - media
+    - steam
+
+#################################################################
+
+- name    : "cmd | add to launcher"
+  script  : "{{ unity_launcher.script }}"
+  become  : "{{ primary_user.id }}"
+  tags:
+    - media
+    - steam
+
+#################################################################
+

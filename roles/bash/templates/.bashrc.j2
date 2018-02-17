@@ -107,7 +107,7 @@ if [ -n "$(which aws)" ]; then
 fi
 
 ## Path
-  export JAVA_HOME="{{ java_dir }}/{{ java_default }}"
+  export JAVA_HOME="{{ java.home }}/java"
   export GRADLE_HOME="{{ gradle.home }}/gradle-4.1"
   export TERRAFORM_HOME="{{ terraform.home }}"
 

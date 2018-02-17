@@ -1,0 +1,12 @@
+---
+
+#################################################################
+
+- name  : "application | start"
+  become: "{{ primary_user.id }}"
+  shell : "nohup indicator-sysmonitor &"
+  tags  :
+    - system-monitor
+
+#################################################################
+

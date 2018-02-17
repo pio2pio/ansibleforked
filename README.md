@@ -1,6 +1,6 @@
 ## Pre-Req
 #### Ubuntu
-- none
+- Install Guest Additions
 
 #### RetroPie
 - Connect Wifi
@@ -13,7 +13,7 @@ ___
 ```
 sudo apt-get install -y python-pip git \
 && sudo pip install ansible \
-&& git clone https://github.com/OurFriendIrony/ubuntu-setup.git /tmp/ansible \
+&& git clone https://github.com/OurFriendIrony/ansible.git /tmp/ansible \
 && cd /tmp/ansible
 ```
 
@@ -27,3 +27,4 @@ sudo apt-get install -y python-pip git \
 ___
 ## Module index
 All Modules are documented [**here**](http://docs.ansible.com/ansible/latest/list_of_all_modules.html)
+

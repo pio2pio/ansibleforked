@@ -10,6 +10,8 @@
     group: "{{ item.id }}"
     mode: 0755
   with_items: "{{ all_users }}"
+  tags:
+    - keychain
 
 #################################################################
 
@@ -18,6 +20,8 @@
     name: "{{ item }}"
     state: "latest"
   with_items: "{{ libraries_apt }}"
+  tags:
+    - keychain
 
 #################################################################
 
@@ -29,6 +33,8 @@
     group: "{{ item.id }}"
     mode: 0644
   with_items: "{{ all_users }}"
+  tags:
+    - keychain
 
 #################################################################
 

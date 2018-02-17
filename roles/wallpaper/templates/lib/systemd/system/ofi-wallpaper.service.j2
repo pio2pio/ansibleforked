@@ -4,6 +4,8 @@ Description={{ service_name }}
 [Service]
 Environment=DISPLAY=:0
 ExecStart=/bin/bash -c "/{{ service_dir }}/{{ service_name }}.sh"
+User={{ primary_user.id }}
+Group={{ primary_user.id }}
 
 [Install]
 WantedBy=basic.target
