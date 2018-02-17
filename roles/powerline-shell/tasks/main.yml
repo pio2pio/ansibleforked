@@ -14,7 +14,7 @@
 
 - name: "copy | .powerline-shell.json"
   template:
-    src: ".powerline-shell.json.j2"
+    src: "powerline-shell.json.j2"
     dest: "{{ item.home }}/.powerline-shell.json"
     owner: "{{ item.id }}"
     group: "{{ item.id }}"

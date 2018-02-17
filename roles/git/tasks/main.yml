@@ -28,7 +28,7 @@
 
 - name: "copy | config"
   template:
-    src     : ".gitconfig.j2"
+    src     : "gitconfig.j2"
     dest    : "{{ item.home }}/.gitconfig"
     owner   : "{{ item.id }}"
     group   : "{{ item.id }}"

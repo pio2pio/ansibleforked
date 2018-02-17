@@ -4,7 +4,7 @@
 
 - name: "copy | config | .bashrc"
   template:
-    src: ".bashrc.j2"
+    src: "bashrc.j2"
     dest: "{{ item.home }}/.bashrc"
     owner: "{{ item.id }}"
     group: "{{ item.id }}"
@@ -15,7 +15,7 @@
 
 - name: "copy | config | .bash_aliases"
   template:
-    src: ".bash_aliases.j2"
+    src: "bash_aliases.j2"
     dest: "{{ item.home }}/.bash_aliases"
     owner: "{{ item.id }}"
     group: "{{ item.id }}"
@@ -26,7 +26,7 @@
 
 - name: "copy | config | .bash_functions"
   template:
-    src: ".bash_functions.j2"
+    src: "bash_functions.j2"
     dest: "{{ item.home }}/.bash_functions"
     owner: "{{ item.id }}"
     group: "{{ item.id }}"

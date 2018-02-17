@@ -1,8 +1,9 @@
 #!/bin/bash
-echo   $(pwd)/scripts/setup.sh
+
 source $(pwd)/scripts/setup.sh
 
 #######################################################################
+
 hosts=$( ansible all --list-hosts | awk '{if (NR!=1) {print $1}}' )
 for host in ${hosts}; do
   if [ ${host} == "127.0.0.1" ]; then

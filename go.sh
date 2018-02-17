@@ -1,9 +1,9 @@
 #!/bin/bash
+
 source ./scripts/setup.sh
 
 #######################################################################
 # Functions
-
 
 usage () {
   PRG=$(basename $0)

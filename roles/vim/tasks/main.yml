@@ -14,7 +14,7 @@
 
 - name: "copy | .vimrc"
   template:
-    src: ".vimrc.j2"
+    src: "vimrc.j2"
     dest: "{{ item.home }}/.vimrc"
     owner: "{{ item.id }}"
     group: "{{ item.id }}"
