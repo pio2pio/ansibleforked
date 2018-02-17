@@ -34,6 +34,16 @@
 
 #################################################################
 
+- name    : "copy | desktop icon"
+  template:
+    src         : "terminator.desktop.j2"
+    dest        : "/usr/share/applications/terminator.desktop"
+    owner       : "{{ primary_user.id }}"
+    group       : "{{ primary_user.id }}"
+    mode        : "0644"
+  tags    :
+    - terminator
+
 - name    : "cmd | add to launcher"
   script  : "{{ unity_launcher.script }}"
   become  : "{{ primary_user.id }}"
