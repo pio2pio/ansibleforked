@@ -8,7 +8,7 @@
 
   vars:
     - gui       : True
-      proxy     : False
+      proxy     : True
 
       root_user:
         id      : 'root'
@@ -17,10 +17,10 @@
         email   : 'root@root.com'
 
       primary_user:
-        id      : 'steve'
-        home    : '/home/steve'
+        id      : 'engineer'
+        home    : '/home/engineer'
         name    : 'Steve Stevens'
-        email   : 'steve.h.i.stevens@gmail.com'
+        email   : 'steven.stevens@travisperkins.co.uk'
 
       all_users:
         - '{{ root_user }}'
@@ -57,7 +57,9 @@
     - { role: developer/terraform             }
     - { role: developer/docker                }
 
-    - { role: media/steam                     }
-
     - { role: work/forticlient                }
+
+  environment:
+    http_proxy  : http://127.0.1.1:3128
+    https_proxy : http://127.0.1.1:3128
 

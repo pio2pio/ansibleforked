@@ -8,6 +8,7 @@
 
   vars:
     - gui       : False
+      proxy     : False
 
       root_user:
         id      : 'root'
