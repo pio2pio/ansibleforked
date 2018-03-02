@@ -4,5 +4,4 @@ libraries_apt:
 
 libraries_pip:
   - ansible
-  - awscli
 

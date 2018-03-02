@@ -56,6 +56,7 @@
     - { role: developer/gradle                }
     - { role: developer/terraform             }
     - { role: developer/docker                }
+    - { role: developer/awscli                }
 
     - { role: media/steam                     }
 
