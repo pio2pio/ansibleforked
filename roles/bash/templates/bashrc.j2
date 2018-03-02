@@ -112,7 +112,7 @@ fi
   export TERRAFORM_HOME="{{ terraform.home }}"
 
 if [ -n "${TERRAFORM_HOME}" ]; then
-  export PATH="${TERRAFORM_HOME}:${PATH}"
+  export PATH="${TERRAFORM_HOME}/bin:${PATH}"
 fi
 if [ -n "${JAVA_HOME}" ]; then
   export PATH="${JAVA_HOME}/bin:${PATH}"

@@ -2,22 +2,6 @@
 
 #################################################################
 
-- name: "mkdirs"
-  file:
-    name    : "{{ item }}"
-    state   : "directory"
-    recurse : "yes"
-    owner   : "{{ primary_user.id }}"
-    group   : "{{ primary_user.id }}"
-    mode    : "0755"
-  with_items:
-    - "{{ terraform.home }}"
-  tags:
-    - developer
-    - terraform
-
-#################################################################
-
 - name: "apt | install"
   apt:
     name    : "{{ item }}"
@@ -29,21 +13,26 @@
 
 #################################################################
 
-- name: "wget"
-  get_url:
-    url     : "{{ terraform.url }}{{ terraform.zip }}"
-    dest    : "/tmp/{{ terraform.zip }}"
+- name: "install"
+  git:
+    repo: "{{ terraform.git  }}"
+    dest: "{{ terraform.home }}"
+  become    : "{{ primary_user.id }}"
   tags:
     - developer
     - terraform
 
-- name: "unpack"
-  unarchive:
-    src     : "/tmp/{{ terraform.zip }}"
-    dest    : "{{ terraform.home }}"
-    owner   : "{{ primary_user.id }}"
-    group   : "{{ primary_user.id }}"
-    creates : "{{ terraform.home }}/terraform"
+- name      : "install version"
+  command   : "{{ terraform.home }}/bin/tfenv install {{ item }}"
+  become    : "{{ primary_user.id }}"
+  with_items: "{{ terraform.version_install }}"
+  tags:
+    - developer
+    - terraform
+
+- name    : "use version"
+  command : "{{ terraform.home }}/bin/tfenv use {{ terraform.version_use }}"
+  become  : "{{ primary_user.id }}"
   tags:
     - developer
     - terraform
