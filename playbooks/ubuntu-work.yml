@@ -47,6 +47,7 @@
     - { role: terminator                      }
 
     - { role: developer/general               }
+    - { role: developer/tomcat                }
     - { role: developer/intellij              ,
           intellij_year       : "2017.3"      ,
           intellij_subversion : "2"           }

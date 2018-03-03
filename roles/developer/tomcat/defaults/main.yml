@@ -1,0 +1,14 @@
+---
+
+tomcat     : "tomcat7"
+
+tomcat_ports:
+  http     : "8090"
+  https    : "8443"
+  ajp      : "8009"
+  redirect : "8443"
+
+tomcat_templates:
+  - name   : "server.xml"
+    dir    : "/etc/{{ tomcat }}"
+

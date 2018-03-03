@@ -1,0 +1,15 @@
+---
+
+#################################################################
+
+- name: "tomcat service | start"
+  service:
+    name: '{{ tomcat }}'
+    enabled: yes
+    state: restarted
+  tags:
+    - developer
+    - tomcat
+
+#################################################################
+
