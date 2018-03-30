@@ -10,12 +10,14 @@
   apt:
     name: "{{ item }}"
     state: "latest"
-  with_items: "{{ libraries_apt }}"
+  with_items: 
+    - "{{ libraries_apt }}"
+    - "{{ packages_apt  }}"
 
-- name: "apt | autoclean"
-  apt:
-    autoclean: yes
-    autoremove: yes
-
+#- name: "apt | autoclean"
+#  apt:
+#    autoclean : yes     # req ansible min 2.4
+#    autoremove: yes     # req ansible min 2.1
+#
 #################################################################
 

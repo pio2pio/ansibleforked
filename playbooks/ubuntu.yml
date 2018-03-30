@@ -7,7 +7,7 @@
   gather_facts  : yes
 
   vars:
-    - gui       : True
+    - gui       : False
       proxy     : False
 
       root_user:
@@ -17,10 +17,10 @@
         email   : 'root@root.com'
 
       primary_user:
-        id      : 'steve'
-        home    : '/home/steve'
-        name    : 'Steve Stevens'
-        email   : 'steve.h.i.stevens@gmail.com'
+        id      : 'ubuntu'
+        home    : '/home/ubuntu'
+        name    : 'Piotrek'
+        email   : 'kapitanpiotrek@gmail.com'
 
       all_users:
         - '{{ root_user }}'
@@ -37,29 +37,25 @@
     - { role: git                             }
     - { role: bash                            }
     - { role: vim                             }
-    - { role: powerline-shell                 }
-    - { role: java                            }
-    - { role: general                         }
-    - { role: keychain                        }
-    - { role: wallpaper                       }
-    - { role: system-monitor                  }
-    - { role: google-chrome                   }
-    - { role: terminator                      }
-
-    - { role: developer/general               }
-    - { role: developer/tomcat                }
-    - { role: developer/intellij              ,
-          intellij_year       : "2017.3"      ,
-          intellij_subversion : "2"           }
-    - { role: developer/android               ,
-          android_version     : "3.0.1.0"     ,
-          android_build       : "171.4443003" }
-    - { role: developer/gradle                }
+#   - { role: powerline-shell                 }
+#   - { role: java                            }
+#   - { role: general                         }
+#   - { role: keychain                        }
+#   - { role: wallpaper                       }
+#   - { role: system-monitor                  }
+#   - { role: google-chrome                   }
+#   - { role: terminator                      }
+#   - { role: developer/general               }
+#   - { role: developer/vvtomcat              }
+#   - { role: developer/intellij              ,
+#         intellij_year       : "2017.3"      ,
+#         intellij_subversion : "2"           }
+#   - { role: developer/android               ,
+#         android_version     : "3.0.1.0"     ,
+#         android_build       : "171.4443003" }
+#   - { role: developer/gradle                }
     - { role: developer/terraform             }
-    - { role: developer/docker                }
+#   - { role: developer/docker                }
     - { role: developer/awscli                }
-
-    - { role: media/steam                     }
-
+#   - { role: media/steam                     }
     - { role: work/forticlient                }
-
